@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vkUI:VkontakteApplication
+        xmlns:vkUI="library://vkontakte.ru/2009/ui"
+        xmlns:s="library://ns.adobe.com/flex/spark"
+        xmlns:fx="http://ns.adobe.com/mxml/2009"
+        xmlns:mx="library://ns.adobe.com/flex/mx"
+        xmlns:components="components.*"
+        usePreloader="false"
+        width="807" height="486"
+        backgroundColor="0xffffff"
+        frameRate="60"
+        >
+
+    <vkUI:layout>
+        <s:BasicLayout/>
+    </vkUI:layout>
+
+    <fx:Declarations>
+        <s:HTTPService url="http://cs1.vensella.ru/app_strepsils/Login" id="loginHTTP" method="POST"
+                       resultFormat="text"/>
+    </fx:Declarations>
+
+    <fx:Style>
+        @namespace
+        vkUI
+        "library://vkontakte.ru/2009/ui"
+        ;
+        @namespace
+        s
+        "library://ns.adobe.com/flex/spark"
+        ;
+        @namespace
+        mx
+        "library://ns.adobe.com/flex/mx"
+        ;
+        @namespace
+        components
+        "componentes.*"
+        ;
+
+        @font-face
+        {
+            src: url("../assets/fonts/MPBoldCond.otf")
+        ;
+            fontFamily: mpbc
+        ;
+        }
+
+        @font-face
+        {
+            src: url("../assets/fonts/MPSemibold.ttf")
+        ;
+            fontFamily: mps
+        ;
+        }
+
+        @font-face
+        {
+            src: url("../assets/fonts/MPRegular.otf")
+        ;
+            fontFamily: mpr
+        ;
+        }
+
+        @font-face
+        {
+            src: url("../assets/fonts/MPBoldCondItalic.otf")
+        ;
+            fontFamily: mpbi
+        ;
+        }
+
+        global {
+            modal-transparency: 0.5;
+            modal-transparency-color: #000000;
+            modal-transparency-blur: 0.5;
+        }
+
+    </fx:Style>
+
+    <fx:Script>
+		<![CDATA[
+        import api.vkontakte.VkontakteGlobals;
+        import api.vkontakte.util.json.JSON;
+
+        import appmodel.ApplicationModel;
+
+        import components.ApplicationView;
+        import components.WallView;
+        import components.common.ApiResult;
+        import components.common.FlashVars;
+        import components.common.UserProfile;
+
+        import mx.core.IVisualElement;
+        import mx.rpc.events.FaultEvent;
+        import mx.rpc.events.ResultEvent;
+
+        public static const APP_STARTED_FROM_WALL:int = 0;
+        public static const APP_STARTED_COMMON:int = 1;
+
+
+        private var mainContentGroup:IVisualElement;
+
+
+        override protected function onAddedToStage(e:Event):void {
+            super.onAddedToStage(e);
+
+            //Context.Model.t = getTimer();
+            //loginHTTP.addEventListener(ResultEvent.RESULT,  httpLoginResult);
+            //loginHTTP.addEventListener(FaultEvent.FAULT,  httpServerFault);
+
+
+            if (isWrapperExists) {
+
+
+                VkontakteGlobals.wrapper.addEventListener("onSettingsChanged", onSettingsChanged);
+                VkontakteGlobals.wrapper.addEventListener("onApplicationAdded", onApplicationAdded);
+                VkontakteGlobals.wrapper.addEventListener("onLocationChanged", onLocationChanged);
+
+
+                Context.Model.currentSettings.ownVkProfile = new UserProfile(VkontakteGlobals.wrapper.application.parameters.viewer_id);
+
+                Context.Model.viewer.id = VkontakteGlobals.wrapper.application.parameters.viewer_id;
+
+                Context.Model.currentSettings.flashVars.viewerType = VkontakteGlobals.wrapper.application.parameters.viewer_type;
+                Context.Model.currentSettings.flashVars.groupId = VkontakteGlobals.wrapper.application.parameters.group_id;
+                Context.Model.currentSettings.flashVars.referrer = VkontakteGlobals.wrapper.application.parameters.referrer;
+                Context.Model.currentSettings.flashVars.posterId = VkontakteGlobals.wrapper.application.parameters.poster_id;
+                Context.Model.currentSettings.flashVars.scaleMode = VkontakteGlobals.wrapper.application.scaleMode;
+                Context.Model.currentSettings.flashVars.postId = VkontakteGlobals.wrapper.application.parameters.post_id;
+                Context.Model.currentSettings.flashVars.userId = VkontakteGlobals.wrapper.application.parameters.user_id;
+
+
+                if (Context.Model.currentSettings.flashVars.referrer == FlashVars.WALL_VIEW_INLINE) {
+                    //mx.controls.Alert.show("App started from wall!");
+                    initApp(APP_STARTED_FROM_WALL);
+                } else {
+                    //Context.Model.currentSettings.apiResult = new ApiResult(VkontakteGlobals.wrapper.application.parameters.api_result, false);
+
+                    if (VkontakteGlobals.wrapper.application.parameters.is_app_user == 0) {
+                        VkontakteGlobals.wrapper.external.showInstallBox();
+                    }
+                    else {
+                        onApplicationAdded(null);
+                    }
+                }
+            } else {
+                // local testing
+
+                Context.Model.currentSettings.ownVkProfile = new UserProfile(ApplicationModel.APPLICATION_AUTHOR_ID);
+                //Context.Model.currentSettings.apiResult = new ApiResult("", true);
+                Context.Model.viewer.id = "72969483";
+
+
+                initApp(APP_STARTED_COMMON);
+            }
+        }
+
+        private function onSettingsChanged(e:Object):void {
+            navigateToURL(new URLRequest(ApplicationModel.APPLICATION_LINK));
+            // may be starting initiated proccess with standert functions
+        }
+
+        private function onApplicationAdded(e:Object):void {
+//            var permissions:Number = Context.Model.currentSettings.apiResult.settingsResponde;
+//
+//            if (!Context.isSettingsIncludeArr(permissions, [1,2,4])) {
+//                VkontakteGlobals.wrapper.external.showSettingsBox(7);
+//            } else {
+//                initApp(APP_STARTED_COMMON);
+//            }
+            initApp(APP_STARTED_COMMON);
+        }
+
+        private function onLocationChanged(e:Object):void {
+            //mx.controls.Alert.show("Hello! Location chaged!");
+            //mx.controls.Alert.show(e.location.toString());
+        }
+
+
+        private function initApp(type:int):void {
+            switch (type) {
+                case APP_STARTED_FROM_WALL:
+
+                    mainContentGroup = new WallView();
+                    mainApplicationGroup.addElement(mainContentGroup);
+
+                    mainApplicationGroup.scaleX = 607 / 456;
+                    mainApplicationGroup.scaleY = 412 / 308;
+
+                    break;
+
+                case APP_STARTED_COMMON:
+
+                    mainContentGroup = new ApplicationView();
+                    mainApplicationGroup.addElement(mainContentGroup);
+
+                    //						var sigObj: Object = Context.getSigObject();
+                    //						loginHTTP.send({
+                    //							userId: Context.Model.currentSettings.ownVkProfile.id,
+                    //							userTime: sigObj["time"],
+                    //							rand: sigObj["rand"],
+                    //							signature: sigObj["sig"]
+                    //						});
+
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+
+        private function httpLoginResult(e:ResultEvent):void {
+            var value:* = JSON.decode(e.result.toString())["Status"];
+            if (value != null) {
+                if (value == 1) {
+                    Context.Model.currentSettings.authKey = JSON.decode(e.result.toString())["AuthKey"];
+
+                    //mainContentGroup = new ApplicationView();
+                    //mainApplicationGroup.addElement(mainContentGroup);
+                }
+            }
+        }
+
+        private function httpServerFault(e:FaultEvent):void {
+            // do somethings
+        }
+
+		]]>
+	</fx:Script>
+
+    <s:BorderContainer
+            id="mainApplicationGroup"
+            width="100%" height="100%"
+            backgroundColor="0xffffff"
+            borderVisible="false"
+            />
+
+
+</vkUI:VkontakteApplication> 

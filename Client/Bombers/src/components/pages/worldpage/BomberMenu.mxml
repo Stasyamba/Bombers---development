@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+         xmlns:s="library://ns.adobe.com/flex/spark"
+         xmlns:mx="library://ns.adobe.com/flex/mx"
+         creationComplete="init()"
+         width="100%">
+    <fx:Script>
+		<![CDATA[
+		]]>
+    </fx:Script>
+
+    <fx:Declarations>
+        <!-- Place non-visual elements (e.g., services, value objects) here -->
+    </fx:Declarations>
+
+    <fx:Script>
+		<![CDATA[
+        import components.ApplicationView;
+
+        import mx.managers.PopUpManager;
+
+        import theGame.games.GameType;
+
+        import windows.CreateGameW;
+
+        private function init():void {
+            Context.Model.addCustomListener(ContextEvent.BOMBER_CHANGED, function (e:ContextEvent):void {
+                // bomberMiddleImage.source = BombersIMG.getImage(Context.Model.curretSettings.ownGameProfile.selectedBomber, BombersIMG.MIDDLE);
+            });
+
+
+        }
+
+        private function singlePlayerGame():void {
+            Context.gameModel.gameType = GameType.SINGLE;
+            Context.Model.dispatchCustomEvent(ContextEvent.NEED_TO_CHANGE_MAIN_TAB, ApplicationView.TAB_NAME_GAME);
+            Context.gameModel.readyToCreateGame.addOnce(function ():void {
+                Context.gameModel.createSinglePlayerGame();
+            })
+
+        }
+
+        private function showCreateGameWindow():void {
+            var createGameW:CreateGameW = new CreateGameW();
+            PopUpManager.addPopUp(createGameW, this, true);
+            createGameW.addEventListener("createGameClicked",function(e:ContextEvent):void{
+                Context.gameModel.tryCreateRegularGame(e.data.name, e.data.pass);
+
+                Context.gameModel.connectedToGame.addOnce(function ():void {
+                    Context.Model.dispatchCustomEvent(ContextEvent.NEED_TO_CHANGE_MAIN_TAB, ApplicationView.TAB_NAME_GAME);
+                });
+            })
+        }
+
+        private function randomGame():void {
+            Context.gameModel.quickJoin();
+            Context.gameModel.connectedToGame.add(function ():void {
+                Context.Model.dispatchCustomEvent(ContextEvent.NEED_TO_CHANGE_MAIN_TAB, ApplicationView.TAB_NAME_GAME);
+            });
+        }
+
+                          ]]>
+	</fx:Script>
+
+
+    <s:HGroup width="100%" horizontalAlign="center">
+        <mx:Image source="@Embed(source='../../../assets/startpagemenu/bombermenubg.png')"/>
+    </s:HGroup>
+
+    <!-- embeding = immitation -->
+    <s:HGroup width="100%" horizontalAlign="center"
+              id="bomberMiddleImage">
+        <mx:Image source="@Embed(source='../../../assets/startpagemenu/testbomber.png')"/>
+    </s:HGroup>
+
+    <s:HGroup width="100%" horizontalAlign="center">
+        <mx:Image source="@Embed(source='../../../assets/startpagemenu/bombermenubglight.png')"/>
+    </s:HGroup>
+
+    <s:VGroup width="100%" horizontalAlign="right" gap="10">
+        <s:HGroup paddingRight="115">
+            <s:Button skinClass="skins.startpage.menu.PlayWithFriendsButtonS"
+                      buttonMode="true" useHandCursor="true"
+                      label="Сыграть с друзьями"
+                      click="showCreateGameWindow();"
+                    />
+        </s:HGroup>
+
+        <s:HGroup paddingRight="115">
+            <s:Button skinClass="skins.startpage.menu.RandomGameS"
+                      buttonMode="true" useHandCursor="true"
+                      label="Случайная игра"
+                      click="randomGame();"
+                    />
+        </s:HGroup>
+        <s:HGroup paddingRight="115">
+            <s:Button skinClass="skins.startpage.menu.RandomGameS"
+                      buttonMode="true" useHandCursor="true"
+                      label="Одиночная игра"
+                      click="singlePlayerGame();"
+                    />
+        </s:HGroup>
+    </s:VGroup>
+
+</s:Group>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+         xmlns:s="library://ns.adobe.com/flex/spark"
+         xmlns:mx="library://ns.adobe.com/flex/mx"
+         creationComplete="init();">
+
+    <fx:Declarations>
+        <s:Animate id="fadeAnimation" target="{imageBase}" duration="{appearingEffectDuration}">
+            <s:SimpleMotionPath property="alpha" valueFrom="0.0" valueTo="1.0"/>
+        </s:Animate>
+    </fx:Declarations>
+
+    <fx:Script>
+		<![CDATA[
+
+        public static const APPEARING_EFFECT_FADE:int = 0;
+
+        [Bindable]
+        public var source:* = "";
+
+        [Bindable]
+        public var maxImageWidth:Number;
+
+        [Bindable]
+        public var maxImageHeight:Number;
+
+        private var appearingEffect:Animate;
+        public var appearingEffectType:int = APPEARING_EFFECT_FADE;
+
+        [Bindable]
+        public var appearingEffectDuration:int = 300;
+
+        private function init():void {
+            switch (appearingEffectType) {
+                case  APPEARING_EFFECT_FADE:
+                    imageBase.alpha = 0;
+                    appearingEffect = fadeAnimation;
+                    break;
+                default:
+                    break;
+            }
+        }
+			
+		]]>
+	</fx:Script>
+
+    <mx:Image id="imageBase"
+              source="{source}"
+              maxHeight="{maxImageHeight}" maxWidth="{maxImageWidth}"
+              creationComplete="{appearingEffect.play()}"
+            />
+
+
+</s:Group>

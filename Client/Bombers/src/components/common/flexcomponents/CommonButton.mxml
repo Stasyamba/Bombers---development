@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Button xmlns:fx="http://ns.adobe.com/mxml/2009"
+          xmlns:s="library://ns.adobe.com/flex/spark"
+          xmlns:mx="library://ns.adobe.com/flex/mx"
+          buttonMode="true" useHandCursor="true"
+          skinClass="skins.common.CommonButtonS"
+        >
+    <fx:Declarations>
+        <!-- Place non-visual elements (e.g., services, value objects) here -->
+    </fx:Declarations>
+
+    <fx:Script>
+		<![CDATA[
+
+        [Bindable]
+        public var text:String = "";
+
+        [Bindable]
+        public var textSize:int = 24;
+
+        [Bindable]
+        public var bgColorLight1:uint = 0x000000;
+
+        [Bindable]
+        public var bgColorLight2:uint = 0x000000;
+
+
+        [Bindable]
+        public var bgColorDark:uint = 0x000000;
+			
+			
+		]]>
+	</fx:Script>
+
+
+</s:Button>

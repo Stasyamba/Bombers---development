@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+         xmlns:s="library://ns.adobe.com/flex/spark"
+         xmlns:mx="library://ns.adobe.com/flex/mx"
+         width="100%" height="100%"
+         creationComplete="init();"
+        >
+    <fx:Declarations>
+        <!-- Place non-visual elements (e.g., services, value objects) here -->
+    </fx:Declarations>
+
+    <fx:Script>
+		<![CDATA[
+        import components.wall.PostIDObject;
+        import components.wall.WallEnjoyTheGame;
+
+        import mx.core.IVisualElement;
+
+        public static const POST_TYPE_REQUEST_TO_ENJOY_THE_GAME:int = 0;
+        public static const POST_TYPE_IAM_A_WINNER:int = 1;
+
+        public var postIDString:String;
+        public var postIDObj:PostIDObject = new PostIDObject();
+
+        private function init():void {
+            var content:IVisualElement = null;
+
+            postIDString = Context.Model.currentSettings.flashVars.postId;
+            postIDObj.decode(postIDString);
+
+            switch (postIDObj.type) {
+                case POST_TYPE_REQUEST_TO_ENJOY_THE_GAME:
+
+                    content = new WallEnjoyTheGame();
+
+                    break;
+                case POST_TYPE_IAM_A_WINNER:
+
+                    //content =  Я тебя сделал!!!
+
+                    break;
+                default:
+                    break;
+            }
+
+            mainWallContainer.addElement(content);
+        }
+			
+		]]>
+	</fx:Script>
+
+    <s:BorderContainer
+            id="mainWallContainer"
+            width="607" height="412"
+            backgroundImage=""
+            borderVisible="false"
+            >
+
+
+    </s:BorderContainer>
+</s:Group>

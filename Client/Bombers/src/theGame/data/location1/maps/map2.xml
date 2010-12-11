@@ -1,0 +1,37 @@
+<!--
+  ~ Copyright (c) 2010.
+  ~ Pavkin Vladimir
+  -->
+
+<Map>
+    <id val="2"/>
+    <name>map2</name>
+    <type>REGULAR</type>
+    <size width="17" height="11" />
+    <spawns>
+        <Spawn x="0" y="5"/>
+        <Spawn x="9" y="10"/>
+        <Spawn x="8" y="0"/>
+        <Spawn x="16" y="4"/>
+    </spawns>
+    <rows>
+        <Row val="ffbfbbfwffwfwfbbf" />
+        <Row val="fwwwwwfwfbwfwwwwf" />
+        <Row val="fwfffffwbbwffbfbf" />
+        <Row val="bwwwwfbfbbfbfwwwf" />
+        <Row val="fbbbbbwfwfwfwbbff" />
+        <Row val="ffbbbbbbbbbbbbbbf" />
+        <Row val="wfwwwfwfwfwffwwbw" />
+        <Row val="wbwwfbfbffbfbfwfw" />
+        <Row val="ffwffwwwbbwfwwwfw" />
+        <Row val="fwwwfbfwbfwfbwfbf" />
+        <Row val="fbfbbbfwffwbbfbfb" />
+    </rows>
+    <objects>
+        <!--разные одноклеточные объекты: бонусы,всякие взрывы динамитов и т.д. -->
+    </objects>
+   <!-- <bigObjects>
+        <BigObject id="vk" life="2" x="13" y="1"/>
+        &lt;!&ndash;большие объекты на несколько клеток. серверу важны только координаты занимаемых клеток для рассчета повреждений &ndash;&gt;
+    </bigObjects>-->
+</Map>

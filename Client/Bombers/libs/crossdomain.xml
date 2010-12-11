@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!DOCTYPE cross-domain-policy
+        SYSTEM "http://www.macromedia.com/xml/dtds/cross-domain-policy.dtd">
+<cross-domain-policy>
+    <allow-access-from domain="vkontakte.ru" to-ports="80"/>
+    <allow-access-from domain="*.vkontakte.ru" to-ports="80"/>
+    <allow-access-from domain="vk.com" to-ports="80"/>
+    <allow-access-from domain="*.vk.com" to-ports="80"/>
+</cross-domain-policy>

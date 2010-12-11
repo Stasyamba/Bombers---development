@@ -1,0 +1,15 @@
+<!--
+  ~ Copyright (c) 2010.
+  ~ Pavkin Vladimir
+  -->
+
+<MapObject>
+    <id>vk</id>
+    <width>2</width>
+    <height>2</height>
+    <defaultLife>2</defaultLife>
+    <states>
+        <State life="2" skin="vk2"/>
+        <State life="1" skin="vk1"/>
+    </states>
+</MapObject>

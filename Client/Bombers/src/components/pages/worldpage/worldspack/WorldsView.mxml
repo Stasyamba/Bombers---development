@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+         xmlns:s="library://ns.adobe.com/flex/spark"
+         xmlns:mx="library://ns.adobe.com/flex/mx"
+         creationComplete="init();"
+         width="100%" height="100%">
+
+
+    <fx:Declarations>
+        <!-- Place non-visual elements (e.g., services, value objects) here -->
+    </fx:Declarations>
+
+
+    <fx:Script>
+		<![CDATA[
+        import components.pages.worldpage.worldspack.worlds.BetaWorld;
+
+        private function init():void {
+        }
+
+        public function loadWorld(world:int, enforced:Boolean = false):void {
+            if (enforced) {
+                var content:* = null;
+                switch (world) {
+                    case WorldsContext.WORLD_DEFAULT:
+                        //content = new TestWorld();
+                        content = new BetaWorld();
+                        break;
+
+                    case WorldsContext.WORLD_TEST:
+                        break;
+                    default:
+                        break;
+                }
+
+                if (content != null) {
+                    mainWorldGroup.removeAllElements();
+                    mainWorldGroup.addElement(content);
+                }
+            } else {
+                if (Context.Model.currentSettings.ownGameProfile.currentWorld != world) {
+                    loadWorld(Context.Model.currentSettings.ownGameProfile.currentWorld, true);
+                }
+            }
+
+
+        }
+			
+		]]>
+	</fx:Script>
+
+    <s:Group width="100%" height="100%"
+             id="mainWorldGroup"
+            />
+
+</s:Group>

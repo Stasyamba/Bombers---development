@@ -1,0 +1,54 @@
+<!--
+  ~ Copyright (c) 2010.
+  ~ Pavkin Vladimir
+  -->
+<Skins>
+<fury>
+    <colors>
+        <SkinColor val="orange">
+            <blendMode val="overlay"/>
+            <opacity val="0.8"/>
+            <color val="0xec660d"/>
+        </SkinColor>
+        <SkinColor val="pink">
+            <blendMode val="overlay"/>
+            <opacity val="0.8"/>
+            <color val="0xba0eeb"/>
+        </SkinColor>
+        <SkinColor val="blue">
+            <blendMode val="screen"/>
+            <opacity val="1"/>
+            <color val="0x0000ff"/>
+        </SkinColor>
+        <SkinColor val="red">
+            <blendMode val="overlay"/>
+            <opacity val="0.75"/>
+            <color val="0xde0e5c"/>
+        </SkinColor>
+    </colors>
+</fury>
+<robot>
+    <colors>
+        <SkinColor val="orange">
+            <blendMode val="overlay"/>
+            <opacity val="0.9"/>
+            <color val="0xf74600"/>
+        </SkinColor>
+        <SkinColor val="pink">
+            <blendMode val="overlay"/>
+            <opacity val="0.8"/>
+            <color val="0xff0ceb"/>
+        </SkinColor>
+        <SkinColor val="blue">
+            <blendMode val="overlay"/>
+            <opacity val="0.8"/>
+            <color val="0x0c34ff"/>
+        </SkinColor>
+        <SkinColor val="red">
+            <blendMode val="overlay"/>
+            <opacity val="1"/>
+            <color val="0xd70303"/>
+        </SkinColor>
+    </colors>
+</robot>
+</Skins>

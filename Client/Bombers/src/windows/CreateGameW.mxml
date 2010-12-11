@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Panel xmlns:mx="library://ns.adobe.com/flex/mx"
+         xmlns:mx1="library://ns.adobe.com/flex/halo"
+         xmlns:s="library://ns.adobe.com/flex/spark"
+         xmlns:fx="http://ns.adobe.com/mxml/2009"
+         creationComplete="panelCreationComplete();"
+         borderVisible="true"
+         dropShadowVisible="true"
+         skinClass="skins.startpage.creategamewindow.CreateGameWindowS"
+         width="632"
+         height="241"
+         cornerRadius="40" xmlns:common="skins.common.*" xmlns:flexcomponents="components.common.flexcomponents.*"
+        >
+
+    <fx:Declarations>
+        <s:Animate id="apearingAnimation" target="{this}" duration="1000">
+            <s:SimpleMotionPath id="apearingPathX"
+                                property="x"
+                                valueFrom="{-this.width}"
+                    />
+
+            <!-- <s:SimpleMotionPath id="apearingPathY"
+                                   property="y"
+                                   valueFrom="{-this.height}"
+                                   /> -->
+        </s:Animate>
+
+        <s:Animate id="disApearingAnimation" target="{this}" duration="300"
+                   effectEnd="disApearingEffectEndHandler();">
+            <s:SimpleMotionPath id="disApearingPathX"
+                                property="alpha"
+                                valueFrom="1"
+                                valueTo="0"
+                    />
+            <s:SimpleMotionPath id="scaleXPath"
+                                property="scaleX"
+                                valueFrom="1"
+                                valueTo="0"
+                    />
+            <s:SimpleMotionPath id="scaleYPath"
+                                property="scaleY"
+                                valueFrom="1"
+                                valueTo="0"
+                    />
+            <!-- <s:SimpleMotionPath id="apearingPathY"
+               property="y"
+               valueFrom="{-this.height}"
+               /> -->
+        </s:Animate>
+    </fx:Declarations>
+
+    <fx:Script>
+		<![CDATA[
+        import components.ApplicationView;
+
+        import mx.controls.Alert;
+        import mx.managers.PopUpManager;
+
+        import theGame.games.GameType;
+        import theGame.utils.Utils;
+
+        private var centeredCoords:Point;
+        private var mw:Bombers;
+
+        private function disApearingEffectEndHandler():void {
+            close();
+        }
+
+        private function close():void {
+            PopUpManager.removePopUp(this);
+        }
+
+        private function panelCreationComplete():void {
+
+            mw = parentApplication as Bombers;
+            centeredCoords = new Point(mw.width / 2 - this.width / 2, mw.height / 2 - this.height / 2);
+
+            this.x = -this.width;
+            this.y = centeredCoords.y - 20;
+
+            apearingPathX.valueFrom = -this.width;
+            apearingPathX.valueTo = centeredCoords.x;
+
+
+            apearingAnimation.play();
+
+        }
+
+        private function createGame_clickHandler(event:MouseEvent):void {
+            if (Utils.isCorrectGameName(gameName.text)) {
+                dispatchEvent(new ContextEvent("createGameClicked",false,false,{name:gameName.text,pass:pass.text}))
+                disApearingAnimation.play();
+
+            }
+            else
+                Alert.show("Неправильное название игры");
+        }
+			
+			
+		]]>
+	</fx:Script>
+    <s:layout>
+        <s:BasicLayout/>
+    </s:layout>
+
+    <s:VGroup width="100%" height="100%"
+              horizontalAlign="center" verticalAlign="top"
+              gap="10"
+              paddingTop="25">
+        <s:HGroup gap="20">
+            <s:VGroup horizontalAlign="left" paddingTop="10">
+                <s:Label text="Введите название игры" color="0x515151"
+                         fontSize="30" fontFamily="mpbc"
+                        />
+
+                <s:Label text="(Можно использовать только буквы английского алфавита, без пробелов. Пример: mybestgame)"
+                         color="0x515151"
+                         fontSize="14" fontFamily="mpr"
+                         width="265"
+                        />
+
+            </s:VGroup>
+
+            <s:TextInput id="gameName"
+                         skinClass="skins.startpage.creategamewindow.TextInputRectS"
+                         fontFamily="mpbi" fontSize="36"
+                         height="50" width="265"
+                         paddingLeft="5" paddingBottom="5" paddingTop="5"
+                         focusSkin="skins.common.NoFocusS"
+                         color="0x595959"
+
+                    />
+        </s:HGroup>
+
+
+        <s:HGroup gap="20">
+            <s:VGroup horizontalAlign="left" paddingTop="10">
+                <s:Label text="Введите пароль" color="0x515151"
+                         fontSize="30" fontFamily="mpbc"
+                        />
+
+                <s:Label text="(С паролем только ваши друзья смогут присоединиться к игре)"
+                         width="265"
+                         color="0x515151"
+                         fontSize="14" fontFamily="mpr"
+                        />
+
+            </s:VGroup>
+
+            <s:TextInput id="pass"
+                         skinClass="skins.startpage.creategamewindow.TextInputRectS"
+                         fontFamily="mpbi" fontSize="36"
+                         height="50" width="265"
+                         paddingLeft="5" paddingBottom="5" paddingTop="5"
+                         focusSkin="skins.common.NoFocusS"
+                         color="0x595959"
+                    />
+        </s:HGroup>
+
+        <s:HGroup width="100%" horizontalAlign="left" verticalAlign="top"
+                  paddingLeft="38">
+
+            <s:Label text="Я передумал" color="0xffffff"
+                     fontFamily="mpbc" fontSize="18"
+                     click="{disApearingAnimation.play();}"
+                     buttonMode="true" useHandCursor="true"
+                    />
+
+            <s:HGroup paddingLeft="200" paddingTop="-20">
+                <flexcomponents:CommonButton text="Присоединиться"
+                                             textSize="16"
+                                             bgColorDark="0x679c65"
+                                             bgColorLight1="0x93c691" bgColorLight2="0x75b072"
+                        />
+
+                <flexcomponents:CommonButton text="Создать"
+                                             textSize="24"
+                                             bgColorDark="0x65799c"
+                                             bgColorLight1="0x91a4c5" bgColorLight2="0x7287af"
+                                             click="createGame_clickHandler(event)"/>
+
+            </s:HGroup>
+        </s:HGroup>
+
+    </s:VGroup>
+
+    <!--
+     <s:Button label="Закрыть" click="close();" right="-20" buttonMode="true" useHandCursor="true" />
+     -->
+
+    <s:controlBarContent/>
+</s:Panel>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:NavigatorContent xmlns:fx="http://ns.adobe.com/mxml/2009"
+                    xmlns:s="library://ns.adobe.com/flex/spark"
+                    xmlns:mx="library://ns.adobe.com/flex/mx"
+                    xmlns:ui="theGame.ui.*"
+                    contentCreationComplete="init();"
+        >
+
+    <fx:Declarations>
+    </fx:Declarations>
+
+    <fx:Script>
+		<![CDATA[
+        import com.smartfoxserver.v2.entities.User;
+
+        import components.ApplicationView;
+
+        import mx.managers.PopUpManager;
+
+        import theGame.data.location1.maps.MapBlocks;
+        import theGame.ui.GameFieldView;
+        import theGame.ui.GameResultsView;
+        import theGame.ui.GameView;
+        import theGame.ui.ThreeSecondsToStart;
+
+        private var now:int,then:int;
+
+        private var gameView:GameFieldView;
+
+        //temporary ui elements
+        private var threeSecsToStart:ThreeSecondsToStart = new ThreeSecondsToStart();
+        private var preGameView:GameView = new GameView();
+        private var gameResultsView:GameResultsView = new GameResultsView();
+        //temporary ui elements
+
+
+        private function init():void {
+
+            Context.Model.addCustomListener(ContextEvent.MAIN_TAB_CHANGED, function (e:ContextEvent):void {
+                if (e.data == ApplicationView.TAB_NAME_GAME) {
+
+
+                    // this tab
+                    // read game context
+                    // create game
+                    if (Context.gameModel.gameType.isMultiplayer) {
+                        initMultiPlayer();
+                    } else {
+                        initSinglePlayer();
+                    }
+
+                    Context.gameModel.gameStarted.add(function ():void {
+                        PopUpManager.removePopUp(threeSecsToStart);
+                    });
+                    Context.gameModel.readyToCreateGame.dispatch();
+                }
+            });
+        }
+
+        private function changeTabBack():void {
+            Context.Model.dispatchCustomEvent(ContextEvent.NEED_TO_CHANGE_MAIN_TAB, ApplicationView.TAB_NAME_WORLD);
+            if (hasEventListener(Event.ENTER_FRAME))
+                unsubscribeEnterFrameEvent();
+            Context.gameModel.gameStarted.removeAll();
+            Context.gameModel.gameEnded.removeAll();
+            Context.gameModel.gameReady.removeAll();
+            Context.gameServer.leftGame.removeAll();
+        }
+
+        private function subscribeEnterFrameEvent():void {
+
+            now = then = getTimer();
+            addEventListener(Event.ENTER_FRAME, onEnterFrame)
+        }
+
+        private function onEnterFrame(e:Event):void {
+            now = getTimer();
+            var elapsed:int = now - then;
+            then = now;
+            Context.gameModel.frameEntered.dispatch(elapsed);
+        }
+
+        private function unsubscribeEnterFrameEvent():void {
+            removeEventListener(Event.ENTER_FRAME, onEnterFrame)
+        }
+
+        private function initMultiPlayer():void {
+            PopUpManager.addPopUp(preGameView, group);
+            preGameView.updateReadyLabels();
+
+            Context.gameServer.leftGame.addOnce(function ():void {
+                PopUpManager.removePopUp(preGameView);
+            });
+
+            Context.gameModel.gameReady.add(function ():void {
+                PopUpManager.removePopUp(preGameView);
+                gameView = new GameFieldView(Context.game);
+                addElement(gameView);
+                PopUpManager.addPopUp(threeSecsToStart, gameView);
+
+                subscribeEnterFrameEvent();
+            });
+
+            Context.gameModel.gameEnded.add(function ():void {
+
+                endGame();
+                Context.gameModel.readyToPlayAgain.addOnce(function () {
+                    PopUpManager.removePopUp(gameResultsView);
+                    PopUpManager.addPopUp(preGameView, group);
+                    preGameView.updateReadyLabels();
+                })
+            });
+
+            initChat();
+        }
+
+        private function initSinglePlayer():void {
+            Context.gameModel.gameReady.add(function ():void {
+                PopUpManager.addPopUp(threeSecsToStart, group);
+                subscribeEnterFrameEvent();
+                gameView = new GameFieldView(Context.game);
+                addElement(gameView);
+            });
+
+            Context.gameModel.gameEnded.add(function ():void {
+
+                endGame();
+
+                Context.gameModel.readyToPlayAgain.addOnce(function () {
+                    changeTabBack();
+                })
+            });
+        }
+
+        private function endGame():void {
+            unsubscribeEnterFrameEvent();
+
+            PopUpManager.addPopUp(gameResultsView, gameView);
+
+            gameView.destroy();
+            removeElement(gameView)
+            gameView = null;
+        }
+
+        private function onSend(event:ContextEvent):void {
+            Context.gameServer.sendInGameMessage(event.data.message);
+        }
+
+        private function initChat():void {
+            for each (var user:User in Context.gameServer.gameRoom.userList) {
+                if (user.isItMe) continue;
+                chat.printSomeoneCame(user.name)
+            }
+            chat.printICame()
+            Context.gameServer.someoneJoinedToGame.add(onSomeoneJoinedGame)
+            Context.gameServer.someoneLeftGame.add(function(user:User) {
+                chat.printSomeoneLeft(user.name)
+            })
+            Context.gameServer.inGameMessageReceived.add(function(user:User, message:String) {
+                chat.printMessage(user.name, message);
+            })
+            Context.gameModel.gameStarted.add(function() {
+                chat.printGameStarted();
+            })
+            Context.gameModel.gameEnded.add(function() {
+                chat.printGameEnded();
+            })
+        }
+
+        private function onSomeoneJoinedGame(user:User):void {
+            chat.printSomeoneCame(user.name)
+        }
+        ]]>
+    </fx:Script>
+    <s:VGroup id="group">
+        <s:BitmapImage id="background"
+                       source="{MapBlocks.MAP_GRASS()}"
+                       width="680" height="440"/>
+        <ui:ChatControl left="10" id="chat" messageSent="onSend(event)"/>
+    </s:VGroup>
+</s:NavigatorContent>

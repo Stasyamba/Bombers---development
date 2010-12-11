@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:NavigatorContent xmlns:fx="http://ns.adobe.com/mxml/2009"
+                    xmlns:s="library://ns.adobe.com/flex/spark"
+                    xmlns:mx="library://ns.adobe.com/flex/mx"
+                    xmlns:worldspack="components.pages.worldpage.worldspack.*"
+                    contentCreationComplete="init();"
+                    width="100%" height="100%" xmlns:worldpage="components.pages.worldpage.*"
+        >
+
+    <fx:Declarations>
+    </fx:Declarations>
+
+    <fx:Script>
+		<![CDATA[
+        import components.ApplicationView;
+
+        private function init():void {
+
+            Context.Model.addCustomListener(ContextEvent.MAIN_TAB_CHANGED, function (e:ContextEvent):void {
+                if (e.data == ApplicationView.TAB_NAME_WORLD) {
+                    // this tab case
+                }
+            });
+
+            Context.Model.addCustomListener(ContextEvent.NEED_TO_CHANGE_WORLD, function (e:ContextEvent):void {
+                worlds.loadWorld(e.data);
+            });
+
+
+            // do once at loading time
+            worlds.loadWorld(Context.Model.currentSettings.ownGameProfile.currentWorld, true);
+        }
+			
+	
+			
+		]]>
+	</fx:Script>
+
+    <worldspack:WorldsView id="worlds"/>
+
+    <s:VGroup width="100%" height="100%"
+              verticalAlign="bottom" horizontalAlign="center">
+        <worldpage:BomberMenu/>
+    </s:VGroup>
+
+
+</s:NavigatorContent>

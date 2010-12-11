@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+         xmlns:s="library://ns.adobe.com/flex/spark"
+         xmlns:mx="library://ns.adobe.com/flex/mx"
+
+         xmlns:worldpage="components.pages.worldpage.*"
+         xmlns:gamepage="components.pages.gamepage.*"
+         width="100%" height="100%"
+         creationComplete="init();"
+        >
+    <!--xmlns:infectingcore="components.infectingcore.*"-->
+    <!--xmlns:healingcore="components.healingcore.*" -->
+    <!--xmlns:mapcore="components.mapcore.*" -->
+    <!--xmlns:messagescore="components.messagescore.*"-->
+
+    <fx:Declarations>
+        <!-- Place non-visual elements (e.g., services, value objects) here -->
+    </fx:Declarations>
+
+    <fx:Script>
+		<![CDATA[
+        import api.vkontakte.VkontakteGlobals;
+
+        import mx.controls.Alert;
+
+        public static const TAB_NAME_WORLD:String = "WorldPage";
+        public static const TAB_NAME_GAME:String = "GamePage";
+        public static const TAB_NAME_INVENORY:String = "InventoryPage"
+
+        //public static const
+
+
+        public static function getTabIndexByName(name:String):int {
+            var res:int = 0;
+            switch (name) {
+                case ApplicationView.TAB_NAME_WORLD:
+                    res = 0;
+                    break;
+                case ApplicationView.TAB_NAME_GAME:
+                    res = 1;
+                    break;
+                case ApplicationView.TAB_NAME_INVENORY:
+                    res = 2;
+                    break;
+
+                default:
+                    res = -1;
+                    break;
+            }
+
+            return res;
+        }
+
+        private function tabChanged():void {
+            var tabName:String = "";
+
+            switch (contentMainViewStack.selectedIndex) {
+                case 0:
+                    tabName = TAB_NAME_WORLD;
+                    break;
+                case 1:
+                    tabName = TAB_NAME_GAME;
+                    break;
+                case 2:
+                    tabName = TAB_NAME_INVENORY;
+                    break;
+                default:
+                    break;
+            }
+
+            Context.Model.dispatchCustomEvent(ContextEvent.MAIN_TAB_CHANGED, tabName);
+        }
+
+        private function init():void {
+            Context.Model.addCustomListener(ContextEvent.NEED_TO_SHOW_ERROR, function(e:ContextEvent):void {
+                openErrorWindow(e.data);
+            });
+
+            Context.Model.addCustomListener(ContextEvent.NEED_TO_CHANGE_MAIN_TAB, function(e:ContextEvent):void {
+                var index:int = getTabIndexByName(e.data);
+                if (index != -1) {
+                    hiddenControlingMenuGroup.selectedIndex = index;
+                } else {
+                    Alert.show("Error occured");
+                }
+                if ((parentApplication as Bombers).isWrapperExists) {
+                    if (e.data == TAB_NAME_GAME)
+                        VkontakteGlobals.wrapper.external.resizeWindow(812, 700)
+                    else
+                        VkontakteGlobals.wrapper.external.resizeWindow(812, 500)
+                }
+            });
+
+            if ((parentApplication as Bombers).isWrapperExists) {
+
+                var currentLocation:String = VkontakteGlobals.wrapper.external.getLocation();
+                if (currentLocation != "") {
+                    //Context.Model.dispatchCustomEvent(ContextEvent.NEED_TO_CHANGE_TAB, getTabIndexByLocation(currentLocation));
+                }
+            }
+
+
+            Context.gameModel.init();
+
+        }
+
+        private function openErrorWindow(data:String):void {
+            //var errorW: ErrorW = new ErrorW();
+            //errorW.errorText = data;
+
+            //PopUpManager.addPopUp(errorW, this, true);
+            //PopUpManager.centerPopUp(errorW);
+        }
+        ]]>
+	</fx:Script>
+
+    <s:ButtonBar id="hiddenControlingMenuGroup"
+                 visible="false"
+                 enabled="true"
+                 dataProvider="{contentMainViewStack}"
+            />
+
+    <mx:ViewStack id="contentMainViewStack"
+                  borderStyle="solid"
+                  borderVisible="false"
+                  backgroundColor="0xffffff"
+                  contentBackgroundColor="0xffffff"
+                  width="100%" height="100%"
+                  change="tabChanged();"
+                  selectedIndex="0"
+            >
+
+
+        <worldpage:WorldPage/>
+        <gamepage:GamePage/>
+
+
+    </mx:ViewStack>
+
+</s:Group>

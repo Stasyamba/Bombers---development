@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2010.
+  ~ Pavkin Vladimir
+  -->
+
+<s:BorderContainer xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+                   creationComplete="borderContainer1_creationCompleteHandler(event)"
+                   width="200" height="140" cornerRadius="20" backgroundColor="0xFFFF00"
+                   x="300" y="210"
+                   show="updateReadyLabels()">
+    <s:VGroup x="5" y="10">
+        <s:Label id="player1"/>
+        <s:Label id="player2"/>
+        <s:Label id="player3"/>
+        <s:Label id="player4"/>
+        <s:Button id="bReady" label="ready" click="bReady_clickHandler(event)"/>
+        <s:Button id="bCancel" label="exit" click="bCancel_clickHandler(event)"/>
+    </s:VGroup>
+    <fx:Script><![CDATA[
+        import com.smartfoxserver.v2.entities.User;
+
+        import mx.events.FlexEvent;
+
+        public function updateReadyLabels():void {
+            var data: Array = Context.gameModel.getUsersReadyState()
+            if (data[1] != null)
+                player1.text = data[1].userName + " " + ( data[1].ready ? "ready" : "not ready");
+            if (data[2] != null)
+                player2.text = data[2].userName + " " + ( data[2].ready ? "ready" : "not ready");
+            if (data[3] != null)
+                player3.text = data[3].userName + " " + ( data[3].ready ? "ready" : "not ready");
+            if (data[4] != null)
+                player4.text = data[4].userName + " " + ( data[4].ready ? "ready" : "not ready");
+        }
+
+        private function bReady_clickHandler(event:MouseEvent):void {
+            Context.gameModel.setMeReady(!Context.gameServer.amIReady);
+        }
+
+        private function onPlayerReadyChanged(user:User):void {
+            updateReadyLabels();
+        }
+
+        private function bCancel_clickHandler(event:MouseEvent):void {
+            Context.gameModel.leaveCurrentGame();
+        }
+
+        private function borderContainer1_creationCompleteHandler(event:FlexEvent):void {
+            Context.gameModel.playerReadyChanged.add(onPlayerReadyChanged);
+            Context.gameServer.someoneJoinedToGame.add(onSomeoneJoinedOrLeft)
+            Context.gameServer.someoneLeftGame.add(onSomeoneJoinedOrLeft)
+        }
+
+        private function onSomeoneJoinedOrLeft(user:User):void {
+            updateReadyLabels();
+        }]]></fx:Script>
+</s:BorderContainer>

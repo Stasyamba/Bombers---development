@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2010.
+  ~ Pavkin Vladimir
+  -->
+
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+          xmlns:mx="library://ns.adobe.com/flex/mx"
+        addedToStage="onAddedToStage(event)">
+    <fx:Script><![CDATA[
+        public function printMessage(from:String, text:String):void {
+            area.htmlText += "<font size='18'> <b>" + from + ":</b> " + text + "</font>\n";
+        }
+
+        public function printICame():void {
+            area.htmlText += "<font size='20'> <i>" + "Вы" + "</i></font>" + "<font size='16'> зашли в игру </font>\n"
+        }
+
+        public function printSomeoneCame(name:String):void {
+            area.htmlText += "<font size='20'> <i>" + name + "</i></font>" + "<font size='16'> зашел(ла) в игру </font>\n"
+        }
+
+        public function printSomeoneLeft(name:String):void {
+            area.htmlText += "<font size='20'> <i>" + name + "</i></font>" + "<font size='16'> вышел(ла) из игры </font>\n"
+        }
+
+        public function printGameStarted():void {
+            area.htmlText += "<font size='22' color=\"FFFF00\">" + "Игра началась" + "</font>\n"
+        }
+
+        public function printGameEnded():void {
+            area.htmlText += "<font size='22' color=\"FFFF00\">" + "Игра закончилась" + "</font>\n"
+        }
+
+        private function onSend(event:MouseEvent):void {
+            if (messageText.text.length > 0){
+                dispatchEvent(new ContextEvent('messageSent', false, false, {message:messageText.text}))
+                messageText.text = "";
+            }
+        }
+
+        private function onAddedToStage(event:Event):void {
+            addEventListener(KeyboardEvent.KEY_DOWN,function(e:KeyboardEvent){
+               if(e.keyCode == Keyboard.ENTER)
+                  onSend(null);
+            });
+        }
+        ]]></fx:Script>
+    <mx:TextArea id="area" width="500" height="150" editable="false"/>
+    <s:HGroup>
+        <s:TextInput id="messageText" width="450"/>
+        <s:Button id="send" width="50" click="onSend(event);"/>
+    </s:HGroup>
+
+    <fx:Metadata>
+        [Event(name="messageSent", type="ContextEvent")]
+    </fx:Metadata>
+</s:VGroup>

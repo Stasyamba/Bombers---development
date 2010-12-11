@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+         xmlns:s="library://ns.adobe.com/flex/spark"
+         xmlns:mx="library://ns.adobe.com/flex/mx"
+         implements="components.pages.worldpage.locations.ILocationPreview"
+        >
+    <fx:Declarations>
+        <!-- Place non-visual elements (e.g., services, value objects) here -->
+    </fx:Declarations>
+
+    <fx:Script>
+		<![CDATA[
+
+        import mx.controls.Alert;
+
+        public function setGlow(visible:Boolean):void {
+            imageUpGlow.visible = visible;
+        }
+
+        public function openLocation():void {
+            // check bomber type
+            // dispatch NEED_TO_OPEN_LOCATION - enabled or disabled
+            Alert.show("building2");
+        }
+			
+		]]>
+	</fx:Script>
+
+    <mx:Image id="imageUpGlow" source="@Embed(source='assets/tests/bulding2glow.png')" visible="false"/>
+    <mx:Image id="imageUp" source="@Embed(source='assets/tests/bulding2.png')"/>
+
+
+    <!-- <s:Rect visible="true" width="200" height="200" radiusX="50">
+         <s:fill>
+             <s:SolidColor color="0xff0000" />
+         </s:fill>
+     </s:Rect>
+     -->
+
+</s:Group>
