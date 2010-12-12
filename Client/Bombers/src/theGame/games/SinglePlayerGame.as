@@ -91,7 +91,7 @@ public class SinglePlayerGame extends GameBase implements IGame {
         var profile:IGameProfile = new GameProfile();
         var gameSkills:IGameSkills = profile.getGameSkills();
         var gameSkin:BomberSkin = profile.getSkin(1);
-        playerManager.setPlayer(playersBuilder.makePlayer(this, 1, profile.name, color, gameSkills,new HameleonWeapon(), gameSkin));
+        playerManager.setPlayer(playersBuilder.makePlayer(this, 1, profile.name, color, gameSkills,new AtomBombWeapon(mapManager,bombsBuilder), gameSkin));
     }
 
     public function addBot(color:PlayerColor):void {

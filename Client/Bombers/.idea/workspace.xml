@@ -5,7 +5,13 @@
     <bookmark url="file://$PROJECT_DIR$/src/theGame/model/GameModel.as" line="170" mnemonic="O" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ffd9d7f-ed19-4084-9d66-243a41d29a1d" name="Default" comment="" />
+    <list default="true" id="3ffd9d7f-ed19-4084-9d66-243a41d29a1d" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/Bombers.swf" afterPath="$PROJECT_DIR$/bin-debug/Bombers.swf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/theGame/games/SinglePlayerGame.as" afterPath="$PROJECT_DIR$/src/theGame/games/SinglePlayerGame.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/theGame/maps/MapView.as" afterPath="$PROJECT_DIR$/src/theGame/maps/MapView.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/theGame/model/explosionss/ExplosionType.as" afterPath="$PROJECT_DIR$/src/theGame/model/explosionss/ExplosionType.as" />
+    </list>
     <ignored path="$USER_HOME$/.griffon/" />
     <ignored path="$USER_HOME$/.grails/" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -70,25 +76,53 @@
       <property name="field_breakpoints_groupByClasses" value="true" />
       <property name="method_breakpoints_groupByClasses" value="true" />
       <property name="exception_breakpoints_viewId" value="TABLE" />
-      <property name="field_breakpoints_viewId" value="TABLE" />
       <property name="exception_breakpoints_groupByClasses" value="true" />
+      <property name="field_breakpoints_viewId" value="TABLE" />
       <property name="method_breakpoints_groupByMethods" value="false" />
     </ui_properties>
+  </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="MapView.as" pinned="false" current="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/src/theGame/maps/MapView.as">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state line="69" column="32" selection-start="2128" selection-end="2128" vertical-scroll-proportion="0.0">
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="SinglePlayerGame.as" pinned="false" current="true" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/theGame/games/SinglePlayerGame.as">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state line="87" column="56" selection-start="3480" selection-end="3480" vertical-scroll-proportion="-0.24062878">
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="ExplosionType.as" pinned="false" current="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/src/theGame/model/explosionss/ExplosionType.as">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state line="10" column="36" selection-start="322" selection-end="322" vertical-scroll-proportion="0.0">
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
   </component>
   <component name="FavoritesManager">
     <favorites_list name="Bombers" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GamePage.mxml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/gamepage/GamePage.mxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="145" column="56" selection-start="4972" selection-end="4972" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="BombType.as" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/theGame/bombss/BombType.as">
           <provider selected="true" editor-type-id="text-editor">
@@ -98,19 +132,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Context.as" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Context.as">
+      <file leaf-file-name="ExplosionType.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/theGame/model/explosionss/ExplosionType.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="33" selection-start="1676" selection-end="1676" vertical-scroll-proportion="0.34676006">
+            <state line="21" column="27" selection-start="769" selection-end="769" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ApplicationView.mxml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/ApplicationView.mxml">
+      <file leaf-file-name="testSingle.xml" pinned="false" current="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/theGame/data/location1/maps/testSingle.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="87" column="48" selection-start="3008" selection-end="3008" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Context.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Context.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="69" column="56" selection-start="1846" selection-end="1846" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -184,8 +227,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/theGame/model/managers/interfaces/IPlayerManager.as" />
-        <option value="$PROJECT_DIR$/src/theGame/weapons/HameleonWeapon.as" />
         <option value="$PROJECT_DIR$/src/theGame/games/GameBase.as" />
         <option value="$PROJECT_DIR$/src/theGame/games/SinglePlayerGame.as" />
         <option value="$PROJECT_DIR$/src/theGame/games/RegularGame.as" />
@@ -200,6 +241,8 @@
         <option value="$PROJECT_DIR$/src/components/ApplicationView.mxml" />
         <option value="$PROJECT_DIR$/src/components/pages/gamepage/GamePage.mxml" />
         <option value="$PROJECT_DIR$/src/theGame/bombss/BombType.as" />
+        <option value="$PROJECT_DIR$/src/theGame/maps/MapView.as" />
+        <option value="$PROJECT_DIR$/src/theGame/model/explosionss/ExplosionType.as" />
       </list>
     </option>
   </component>
@@ -267,26 +310,12 @@
               <option name="myItemId" value="Bombers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bombers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bombers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="Favorites" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -305,8 +334,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CreateActionScriptClassDialog.DESTINATION_PACKAGE_RECENT_KEY">
@@ -369,7 +398,17 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="FlexRunConfigurationType" factoryName="Flex" browser_family="FIREFOX" debugger_sdk="Module SDK" html_or_swf_file_path="" launcher_type="OSDefault" main_class_name="" module_name="" player_path="FlashPlayer.exe" run_mode="HtmlOrSwfFile" run_trusted="false" url_to_launch="http://">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -410,17 +449,7 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
+    <configuration default="true" type="FlexRunConfigurationType" factoryName="Flex" browser_family="FIREFOX" debugger_sdk="Module SDK" html_or_swf_file_path="" launcher_type="OSDefault" main_class_name="" module_name="" player_path="FlashPlayer.exe" run_mode="HtmlOrSwfFile" run_trusted="false" url_to_launch="http://">
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -448,15 +477,6 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="FtpUpload" enabled="false" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-        <option name="ValidateXdebugSetup" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" />
       <module name="" />
@@ -481,6 +501,15 @@
         <option name="BuildArtifacts" enabled="false" />
         <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="FtpUpload" enabled="false" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+        <option name="ValidateXdebugSetup" enabled="true" />
       </method>
     </configuration>
     <configuration default="false" name="Unnamed" type="FlexRunConfigurationType" factoryName="Flex" browser_family="FIREFOX" debugger_sdk="Module SDK" html_or_swf_file_path="$PROJECT_DIR$/bin-debug/Bombers.swf" launcher_type="OSDefault" main_class_name="" module_name="Bombers" player_path="FlashPlayer.exe" run_mode="HtmlOrSwfFile" run_trusted="false" url_to_launch="http://">
@@ -552,8 +581,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="-8" width="1320" height="784" extended-state="7" />
-    <editor active="false" />
+    <frame x="54" y="-8" width="1320" height="784" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290938" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -567,7 +596,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15115353" sideWeight="0.24165341" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1805887" sideWeight="0.79332274" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12012729" sideWeight="0.79332274" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4516129" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -647,26 +676,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/theGame/bombers/PlayerBomber.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="148" column="24" selection-start="5065" selection-end="5065" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/theGame/bombers/BomberBase.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="56" selection-start="1069" selection-end="1069" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/theGame/bombers/view/BomberViewBase.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="48" selection-start="1986" selection-end="1986" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/theGame/bombers/EnemyBomber.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="22" selection-start="1272" selection-end="1272" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/theGame/utils/ViewState.as">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="57" selection-start="257" selection-end="257" vertical-scroll-proportion="0.0" />
@@ -682,11 +691,6 @@
         <state line="145" column="56" selection-start="4972" selection-end="4972" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/theGame/bombss/BombType.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="26" selection-start="519" selection-end="519" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/ApplicationView.mxml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="87" column="48" selection-start="3008" selection-end="3008" vertical-scroll-proportion="0.0" />
@@ -699,16 +703,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/worldpage/BomberMenu.mxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="76" selection-start="1754" selection-end="1754" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="48" column="76" selection-start="1754" selection-end="1754" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/windows/CreateGameW.mxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="65" selection-start="3193" selection-end="3210" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="90" column="65" selection-start="3193" selection-end="3210" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/theGame/model/gameServer/GameServer.as">
@@ -718,21 +718,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/theGame/model/signals/manage/SomeoneJoinedToGameSignal.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="183" selection-end="183" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="10" column="13" selection-start="183" selection-end="183" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/theGame/ui/ChatControl.mxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="31" selection-start="1840" selection-end="1840" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="44" column="31" selection-start="1840" selection-end="1840" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Context.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="33" selection-start="1676" selection-end="1676" vertical-scroll-proportion="0.34676006">
+        <state line="69" column="56" selection-start="1846" selection-end="1846" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/theGame/bombss/BombType.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="26" selection-start="519" selection-end="519" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/theGame/model/explosionss/ExplosionType.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="36" selection-start="322" selection-end="322" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/theGame/maps/MapView.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="32" selection-start="2128" selection-end="2128" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/theGame/games/SinglePlayerGame.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="87" column="56" selection-start="3480" selection-end="3480" vertical-scroll-proportion="-0.24062878">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/theGame/data/location1/maps/testSingle.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -795,6 +824,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

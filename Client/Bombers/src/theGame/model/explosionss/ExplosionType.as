@@ -6,10 +6,10 @@
 package theGame.model.explosionss {
 public class ExplosionType {
 
-    public static const REGULAR:ExplosionType = new ExplosionType("REGULAR",1);
-    public static const NULL:ExplosionType = new ExplosionType("NULL",0);
-    public static const COMPLEX:ExplosionType = new ExplosionType("COMPLEX",0);
-    public static const ATOM:ExplosionType = new ExplosionType("ATOM",3);
+    public static const REGULAR:ExplosionType = new ExplosionType("REGULAR", 1, false);
+    public static const NULL:ExplosionType = new ExplosionType("NULL", 0, false);
+    public static const COMPLEX:ExplosionType = new ExplosionType("COMPLEX", 0, false);
+    public static const ATOM:ExplosionType = new ExplosionType("ATOM", 3, true);
     public static function byValue(value:String):ExplosionType {
         switch(value){
             case "REGULAR":return REGULAR;
@@ -21,10 +21,12 @@ public class ExplosionType {
 
     private var _timeToLive:Number;
     private var _value : String;
+    private var _printsEverywhere:Boolean;
 
-    public function ExplosionType( value:String,timeToLive:Number) {
+    public function ExplosionType( value:String,timeToLive:Number, printsEverywhere:Boolean) {
         _timeToLive = timeToLive;
         _value = value;
+        _printsEverywhere = printsEverywhere;
     }
 
     public function get value():String {
@@ -33,6 +35,10 @@ public class ExplosionType {
 
     public function get timeToLive():Number {
         return _timeToLive;
+    }
+
+    public function get printsEverywhere():Boolean {
+        return _printsEverywhere;
     }
 }
 }

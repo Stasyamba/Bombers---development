@@ -12,6 +12,7 @@ import mx.collections.ArrayList;
 
 import theGame.data.Consts;
 import theGame.data.location1.maps.MapBlocks;
+import theGame.explosionss.ExplosionPoint;
 import theGame.explosionss.ExplosionView;
 import theGame.explosionss.interfaces.IExplosion;
 import theGame.interfaces.IDestroyable;
@@ -66,10 +67,19 @@ public class MapView extends Sprite implements IDrawable,IDestroyable  {
 
     private function onExplosionsAdded(expls:ArrayList):void {
         for each (var e:IExplosion in expls.source) {
-            if(!hasDrawnAfterExplosionAt(e.centerX,e.centerY)){
-                drawAfterExplosion(e.centerX,e.centerY);
-                pointsDrawnAfterExplosion.addItem(new Point(e.centerX,e.centerY))
+            if(e.type.printsEverywhere){
+                e.forEachPoint(function(p:ExplosionPoint){
+                      drawExplosionPoint(p.x,p.y);
+                })
             }
+            else drawExplosionPoint(e.centerX,e.centerY);
+        }
+    }
+
+    private function drawExplosionPoint(x:int,y:int):void {
+        if (!hasDrawnAfterExplosionAt(x, y)) {
+            drawAfterExplosion(x, y);
+            pointsDrawnAfterExplosion.addItem(new Point(x, y))
         }
     }
 
