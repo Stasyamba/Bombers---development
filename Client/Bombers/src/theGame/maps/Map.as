@@ -4,6 +4,7 @@
  */
 
 package theGame.maps {
+import mx.collections.ArrayList;
 import mx.controls.Alert;
 
 import theGame.data.location1.mapObjects.BigObjects;
@@ -11,7 +12,6 @@ import theGame.maps.bigObjects.BigObject;
 import theGame.maps.builders.MapBlockBuilder;
 import theGame.maps.interfaces.IBigObject;
 import theGame.maps.interfaces.IMapBlock;
-import theGame.maps.mapBlocks.MapBlock;
 import theGame.maps.mapBlocks.MapBlockType;
 import theGame.utils.Direction;
 
@@ -26,6 +26,8 @@ public class Map implements IMap {
     private var _width:uint;
     private var _height:uint;
     private var _spawns:Array = new Array();
+
+    private var _explosionPrints:ArrayList = new ArrayList();
 
     //blockBuilder is injected via mapBuilder
     public function Map(xml:XML, blockBuilder:MapBlockBuilder) {
@@ -114,6 +116,7 @@ public class Map implements IMap {
         return getBlock(ofX, ofY + 1);
     }
 
+    //getters
     public function get width():uint {
         return _width;
     }
@@ -140,6 +143,10 @@ public class Map implements IMap {
 
     public function validPoint(x:int, y:int):Boolean {
         return (x >= 0) && (y >= 0) && (x < width) && (y < height);
+    }
+
+    public function get explosionPrints():ArrayList {
+        return _explosionPrints;
     }
 }
 }

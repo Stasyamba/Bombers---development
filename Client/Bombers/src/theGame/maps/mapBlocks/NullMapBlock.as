@@ -13,6 +13,7 @@ import theGame.maps.interfaces.IMapBlock;
 import theGame.maps.interfaces.IMapBlockState;
 import theGame.maps.interfaces.IMapObject;
 import theGame.maps.mapObjects.NullMapObject;
+import theGame.model.explosionss.ExplosionType;
 
 /*
  * NullMapBlock is to avoid null checks
@@ -36,7 +37,6 @@ public class NullMapBlock extends MapBlockBase implements IMapBlock {
     }
 
 
-
     public override function get x():int {
         return -1;
     }
@@ -49,6 +49,14 @@ public class NullMapBlock extends MapBlockBase implements IMapBlock {
         return false;
     }
 
+    public function get explodedBy():ExplosionType {
+        return ExplosionType.NULL;
+    }
+
+    public function canHaveExplosionPrint(explType:ExplosionType):Boolean {
+        return false;
+    }
+
     public function collectObject(byMe:Boolean):void {
     }
 
@@ -56,7 +64,7 @@ public class NullMapBlock extends MapBlockBase implements IMapBlock {
         return null;
     }
 
-    public function get isExploded():Boolean {
+    public function get hasExplosionPrint():Boolean {
         return false;
     }
 
@@ -83,7 +91,7 @@ public class NullMapBlock extends MapBlockBase implements IMapBlock {
     public function explode(expl:IExplosion):void {
     }
 
-    public function typeAfterExplosion(expl:IExplosion):MapBlockType {
+    public function stateAfterExplosion(expl:IExplosion):MapBlockType {
         return MapBlockType.NULL;
     }
 
@@ -115,7 +123,7 @@ public class NullMapBlock extends MapBlockBase implements IMapBlock {
         return false;
     }
 
-    public function set hiddenObject(value:IMapObject):void  {
+    public function set hiddenObject(value:IMapObject):void {
     }
 
     public function get hiddenObject():IMapObject {

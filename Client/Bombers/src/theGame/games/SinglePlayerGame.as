@@ -30,7 +30,6 @@ import theGame.playerColors.PlayerColor;
 import theGame.profiles.GameProfile;
 import theGame.profiles.interfaces.IGameProfile;
 import theGame.weapons.AtomBombWeapon;
-import theGame.weapons.HameleonWeapon;
 import theGame.weapons.WeaponType;
 
 public class SinglePlayerGame extends GameBase implements IGame {
@@ -82,7 +81,7 @@ public class SinglePlayerGame extends GameBase implements IGame {
     }
 
     private function onTriedToUseWeapon(playerId:int, x:int, y:int, type:WeaponType):void {
-        weaponUsed.dispatch(playerId,x,y,type);
+        weaponUsed.dispatch(playerId, x, y, type);
     }
 
 
@@ -91,11 +90,11 @@ public class SinglePlayerGame extends GameBase implements IGame {
         var profile:IGameProfile = new GameProfile();
         var gameSkills:IGameSkills = profile.getGameSkills();
         var gameSkin:BomberSkin = profile.getSkin(1);
-        playerManager.setPlayer(playersBuilder.makePlayer(this, 1, profile.name, color, gameSkills,new AtomBombWeapon(mapManager,bombsBuilder), gameSkin));
+        playerManager.setPlayer(playersBuilder.makePlayer(this, 1, profile.name, color, gameSkills, new AtomBombWeapon(mapManager, bombsBuilder), gameSkin));
     }
 
     public function addBot(color:PlayerColor):void {
-        enemiesManager.addEnemy(playersBuilder.makeEnemyBot(this, enemiesManager.enemiesCount + 2, "bot" + enemiesManager.enemiesCount, color, new GameSkills(),new AtomBombWeapon(mapManager,bombsBuilder), new GameProfile().getSkin(enemiesManager.enemiesCount + 2), new AlongRightWallWalkingStrategy()))
+        enemiesManager.addEnemy(playersBuilder.makeEnemyBot(this, enemiesManager.enemiesCount + 2, "bot" + enemiesManager.enemiesCount, color, new GameSkills(), new AtomBombWeapon(mapManager, bombsBuilder), new GameProfile().getSkin(enemiesManager.enemiesCount + 2), new AlongRightWallWalkingStrategy()))
     }
 
 

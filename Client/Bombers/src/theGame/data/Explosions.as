@@ -18,7 +18,7 @@ public class Explosions {
     private static var down:Bitmap;
 
     //todo: after should go to mapBlock
-    private static var after:Bitmap;
+    private static var print:Bitmap;
 
     [Embed(source="../data/location1/images/explosions/cross.png")]
     public static const CROSS_CLASS:Class;
@@ -35,8 +35,8 @@ public class Explosions {
     public static const UP_CLASS:Class;
     [Embed(source="../data/location1/images/explosions/down.png")]
     public static const DOWN_CLASS:Class;
-    [Embed(source="../data/location1/images/explosions/after.png")]
-    public static const AFTER_CLASS:Class;
+    [Embed(source="location1/images/explosions/print.png")]
+    public static const PRINT_CLASS:Class;
 
     public static function get CROSS():BitmapData {
         if (cross == null)
@@ -80,10 +80,10 @@ public class Explosions {
         return down.bitmapData;
     }
 
-    public static function get AFTER():BitmapData {
-        if (after == null)
-            after = new AFTER_CLASS() as Bitmap;
-        return after.bitmapData;
+    public static function get PRINT():BitmapData {
+        if (print == null)
+            print = new PRINT_CLASS() as Bitmap;
+        return print.bitmapData;
     }
 
 
@@ -100,7 +100,7 @@ public class Explosions {
     private static var die1:Bitmap;
     private static var die2:Bitmap;
 
-     public static function get DIE0():BitmapData {
+    public static function get DIE0():BitmapData {
         if (die0 == null)
             die0 = new die0_class() as Bitmap;
         return die0.bitmapData;
@@ -111,6 +111,7 @@ public class Explosions {
             die1 = new die1_class() as Bitmap;
         return die1.bitmapData;
     }
+
     public static function get DIE2():BitmapData {
         if (die2 == null)
             die2 = new die2_class() as Bitmap;

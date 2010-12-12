@@ -10,8 +10,9 @@ public class ExplosionType {
     public static const NULL:ExplosionType = new ExplosionType("NULL", 0, false);
     public static const COMPLEX:ExplosionType = new ExplosionType("COMPLEX", 0, false);
     public static const ATOM:ExplosionType = new ExplosionType("ATOM", 3, true);
+
     public static function byValue(value:String):ExplosionType {
-        switch(value){
+        switch (value) {
             case "REGULAR":return REGULAR;
             case "NULL":return NULL;
             case "ATOM":return ATOM;
@@ -20,10 +21,10 @@ public class ExplosionType {
     }
 
     private var _timeToLive:Number;
-    private var _value : String;
+    private var _value:String;
     private var _printsEverywhere:Boolean;
 
-    public function ExplosionType( value:String,timeToLive:Number, printsEverywhere:Boolean) {
+    public function ExplosionType(value:String, timeToLive:Number, printsEverywhere:Boolean) {
         _timeToLive = timeToLive;
         _value = value;
         _printsEverywhere = printsEverywhere;

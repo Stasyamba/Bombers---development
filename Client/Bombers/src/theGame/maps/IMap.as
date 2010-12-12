@@ -4,6 +4,8 @@
  */
 
 package theGame.maps {
+import mx.collections.ArrayList;
+
 import theGame.maps.interfaces.IBigObject;
 import theGame.maps.interfaces.IMapBlock;
 import theGame.utils.Direction;
@@ -31,5 +33,7 @@ public interface IMap {
     function get spawns():Array;
 
     function validPoint(x:int, y:int):Boolean;
+
+    function get explosionPrints():ArrayList;
 }
 }

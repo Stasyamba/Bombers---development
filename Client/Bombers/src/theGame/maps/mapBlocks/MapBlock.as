@@ -4,10 +4,6 @@
  */
 
 package theGame.maps.mapBlocks {
-import flash.events.Event;
-import flash.events.TimerEvent;
-import flash.utils.Timer;
-
 import org.osflash.signals.Signal;
 
 import theGame.bombss.BombType;
@@ -20,6 +16,7 @@ import theGame.maps.interfaces.IMapBlock;
 import theGame.maps.interfaces.IMapBlockState;
 import theGame.maps.interfaces.IMapObject;
 import theGame.maps.mapObjects.NullMapObject;
+import theGame.model.explosionss.ExplosionType;
 
 //builders are injected after creation
 public class MapBlock extends MapBlockBase implements IMapBlock {
@@ -32,10 +29,12 @@ public class MapBlock extends MapBlockBase implements IMapBlock {
     private var _object:IMapObject;
     private var _bomb:IBomb;
 
-    private var _isExploded:Boolean = false;
-
     private var _isExplodingNow:Boolean = false;
+
     private var _objectCollected:Signal = new Signal(Boolean);
+
+    private var _explodedBy:ExplosionType;
+    private var _hasExplosionPrint:Boolean = false;
 
     public function get isExplodingNow():Boolean {
         return _isExplodingNow;
@@ -70,17 +69,33 @@ public class MapBlock extends MapBlockBase implements IMapBlock {
         return state.explodesAndStopsExplosion();
     }
 
+    public function canHaveExplosionPrint(explType:ExplosionType):Boolean {
+        return state.canHaveExplosionPrint(explType);
+    }
+
+    private function checkExplosionPrint(expl:IExplosion):void {
+        if (expl.type.printsEverywhere || (expl.centerX == x && expl.centerY == y)) {
+            if (state.canHaveExplosionPrint(expl.type)) {
+                _hasExplosionPrint = true;
+                _explodedBy = expl.type
+            }
+        }
+    }
+
     public function explode(expl:IExplosion):void {
-        //todo:add big object check
-        if (_state.typeAfterExplosion(expl) != _state.type) {
+
+        checkExplosionPrint(expl);
+
+        if (_state.stateAfterExplosion(expl) != _state.type) {
             explosionStopped.addOnce(function():void {
-                if (_state.typeAfterExplosion(expl) == MapBlockType.FREE)
+                if (_state.stateAfterExplosion(expl) == MapBlockType.FREE)
                     _object = _state.hiddenObject;
-                _state = _mapBlockStateBuilder.make(_state.typeAfterExplosion(expl));
+                _state = _mapBlockStateBuilder.make(_state.stateAfterExplosion(expl));
             });
         }
         else
             state.explode(expl);
+
         _isExplodingNow = true;
         explosionStarted.dispatch();
     }
@@ -114,24 +129,8 @@ public class MapBlock extends MapBlockBase implements IMapBlock {
 
     public function clearBomb():void {
         _bomb = NullBomb.getInstance();
-        _isExploded = true;
         viewUpdated.dispatch();
     }
-
-
-    public function get isExploded():Boolean {
-        return _isExploded;
-    }
-
-    public function get object():IMapObject {
-        return _object;
-    }
-
-
-    public function typeAfterExplosion(expl:IExplosion):MapBlockType {
-        return state.typeAfterExplosion(expl);
-    }
-
 
     public function setBomb(bomb:IBomb):void {
         _bomb = bomb;
@@ -147,6 +146,29 @@ public class MapBlock extends MapBlockBase implements IMapBlock {
         }
     }
 
+    public function setDieWall():void {
+        // _object = NullMapObject.getInstance();
+        _state = _mapBlockStateBuilder.make(MapBlockType.WALL)
+        if (_state.type != MapBlockType.WALL)
+            trace("WTF???")
+        viewUpdated.dispatch();
+    }
+
+    //getters
+    public function get hasExplosionPrint():Boolean {
+        return _explodedBy;
+    }
+
+
+    public function get object():IMapObject {
+        return _object;
+    }
+
+
+    public function stateAfterExplosion(expl:IExplosion):MapBlockType {
+        return state.stateAfterExplosion(expl);
+    }
+
     public function get bomb():IBomb {
         return _bomb;
     }
@@ -159,7 +181,7 @@ public class MapBlock extends MapBlockBase implements IMapBlock {
         return state.hiddenObject;
     }
 
-    public function set hiddenObject(value:IMapObject):void  {
+    public function set hiddenObject(value:IMapObject):void {
         state.hiddenObject = value;
     }
 
@@ -167,12 +189,10 @@ public class MapBlock extends MapBlockBase implements IMapBlock {
         return state.canShowObjects;
     }
 
-    public function setDieWall():void {
-       // _object = NullMapObject.getInstance();
-        _state = _mapBlockStateBuilder.make(MapBlockType.WALL)
-        if(_state.type != MapBlockType.WALL)
-            trace ("WTF???")
-        viewUpdated.dispatch();
+    public function get explodedBy():ExplosionType {
+        return _explodedBy;
     }
+
+
 }
 }

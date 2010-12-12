@@ -5,9 +5,7 @@
 
 package theGame.ui {
 import flash.events.Event;
-
 import flash.events.KeyboardEvent;
-
 import flash.ui.Keyboard;
 
 import mx.collections.ArrayList;
@@ -23,16 +21,32 @@ import theGame.games.IGame;
 import theGame.interfaces.IDestroyable;
 import theGame.interfaces.IDrawable;
 import theGame.maps.MapView;
+import theGame.maps.OverMapView;
+import theGame.maps.bigObjects.view.BigObjectsView;
+import theGame.maps.mapBlocks.view.MapBlocksView;
 import theGame.utils.Utils;
 
 public class GameFieldView extends Container implements IDrawable,IDestroyable {
 
     private var game:IGame;
+    /*--- layers from bottom to top*/
 
+    //background and background objects
     public var mapView:MapView;
+    //a layer between explosions and map. now is used to draw explosion prints
+    public var overMapView:OverMapView;
+    //bomb explosions (no die explosions here)
     public var explosionsView:ExplosionView;
-    public var playerView:PlayerView;
+    //map blocks : boxes,walls and so on
+    public var mapBlocksView:MapBlocksView;
+    //interactive big objects players walk on
+    public var lowerBigObjectsView:BigObjectsView;
+    //enemies
     public var enemiesViews:ArrayList = new ArrayList();
+    //player
+    public var playerView:PlayerView;
+    //interactive big objects players walk under
+    public var higherBigObjectsView:BigObjectsView;
 
 
     private var contentUI:UIComponent = new UIComponent();
@@ -41,20 +55,35 @@ public class GameFieldView extends Container implements IDrawable,IDestroyable {
         super();
         this.game = game;
 
-        addEventListener(Event.ADDED_TO_STAGE,addedToStageHandler);
+        addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
 
-        playerView = new PlayerView(game.playerManager.me);
-        explosionsView = new ExplosionView();
-        mapView = new MapView(game.mapManager.map, explosionsView);
-
+        mapView = new MapView(game.mapManager.map);
         contentUI.addChild(mapView);
-        contentUI.addChild(playerView);
+
+        overMapView = new OverMapView(game.mapManager.map);
+        contentUI.addChild(overMapView);
+
+        explosionsView = new ExplosionView();
+        contentUI.addChild(explosionsView);
+
+        mapBlocksView = new MapBlocksView(game.mapManager.map)
+        contentUI.addChild(mapBlocksView);
+
+        lowerBigObjectsView = new BigObjectsView(game.mapManager.map)
+        contentUI.addChild(lowerBigObjectsView);
 
         game.enemiesManager.forEachAliveEnemy(function todo(item:IEnemyBomber, playerId:int):void {
             var enemyView:EnemyView = new EnemyView(item);
             enemiesViews.addItem(enemyView);
             contentUI.addChild(enemyView);
         })
+
+        playerView = new PlayerView(game.playerManager.me);
+        contentUI.addChild(playerView);
+
+        higherBigObjectsView = new BigObjectsView(game.mapManager.map);
+        contentUI.addChild(higherBigObjectsView);
+
     }
 
     private function keyDown(event:KeyboardEvent):void {
@@ -62,7 +91,7 @@ public class GameFieldView extends Container implements IDrawable,IDestroyable {
             game.playerManager.me.addDirection(Utils.arrowKeyCodeToDirection(event.keyCode))
         } else if (event.keyCode == Keyboard.SPACE) {
             game.playerManager.me.setBomb(BombType.REGULAR);
-        } else if (event.keyCode == Keyboard.CONTROL){
+        } else if (event.keyCode == Keyboard.CONTROL) {
             game.playerManager.me.tryUseWeapon();
         }
     }
@@ -94,7 +123,7 @@ public class GameFieldView extends Container implements IDrawable,IDestroyable {
     public function destroy():void {
         stage.removeEventListener(KeyboardEvent.KEY_DOWN, keyDown);
         stage.removeEventListener(KeyboardEvent.KEY_UP, keyUp);
-        removeEventListener(Event.ADDED_TO_STAGE,addedToStageHandler)
+        removeEventListener(Event.ADDED_TO_STAGE, addedToStageHandler)
 
 //        mapView.destroy();
 //        explosionsView.destroy();

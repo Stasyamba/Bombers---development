@@ -5,11 +5,11 @@
 
 package theGame.maps.mapBlocks.mapBlockStates {
 import theGame.explosionss.interfaces.IExplosion;
-import theGame.maps.interfaces.IBonus;
 import theGame.maps.interfaces.IMapBlockState;
 import theGame.maps.interfaces.IMapObject;
 import theGame.maps.mapBlocks.MapBlockType;
 import theGame.maps.mapObjects.NullMapObject;
+import theGame.model.explosionss.ExplosionType;
 
 public class FragileWallBlock implements IMapBlockState {
 
@@ -18,17 +18,14 @@ public class FragileWallBlock implements IMapBlockState {
     }
 
     public var lifePoints:int;
+
     private var _hiddenObject:IMapObject = NullMapObject.getInstance();
 
-    public function get hiddenObject():IMapObject {
-        return _hiddenObject;
-    }
-
     public function canSetBomb():Boolean {
-        return false;    
+        return false;
     }
 
-    public function typeAfterExplosion(expl:IExplosion):MapBlockType {
+    public function stateAfterExplosion(expl:IExplosion):MapBlockType {
         return lifePoints > 1 ? MapBlockType.FRAGILE_WALL : MapBlockType.FREE;
     }
 
@@ -52,14 +49,19 @@ public class FragileWallBlock implements IMapBlockState {
         return MapBlockType.FRAGILE_WALL;
     }
 
-    public function stopExplosion():void {
-    }
-
     public function get canShowObjects():Boolean {
         return false;
     }
 
-    public function set hiddenObject(value:IMapObject):void  {
+    public function canHaveExplosionPrint(explType:ExplosionType):Boolean {
+        return lifePoints > 1;
+    }
+
+    public function get hiddenObject():IMapObject {
+        return _hiddenObject;
+    }
+
+    public function set hiddenObject(value:IMapObject):void {
         _hiddenObject = value;
     }
 }

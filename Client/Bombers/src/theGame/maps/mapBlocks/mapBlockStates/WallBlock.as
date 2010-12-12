@@ -15,12 +15,6 @@ public class WallBlock implements IMapBlockState {
     public function WallBlock() {
     }
 
-    private var _isExplodingNow:Boolean = false;
-
-    public function get isExplodingNow():Boolean {
-        return _isExplodingNow;
-    }
-
     public function explodesAndStopsExplosion():Boolean {
         return false;
     }
@@ -41,9 +35,9 @@ public class WallBlock implements IMapBlockState {
         return false;
     }
 
-    public function typeAfterExplosion(expl:IExplosion):MapBlockType {
-        if(expl.type == ExplosionType.ATOM)
-             return MapBlockType.FREE;
+    public function stateAfterExplosion(expl:IExplosion):MapBlockType {
+        if (expl.type == ExplosionType.ATOM)
+            return MapBlockType.FREE;
         return MapBlockType.WALL;
     }
 
@@ -52,18 +46,19 @@ public class WallBlock implements IMapBlockState {
         // atom explosion makes it free so do nothing either
     }
 
-    public function stopExplosion():void {
+    public function get canShowObjects():Boolean {
+        return false;
+    }
+
+    public function canHaveExplosionPrint(explType:ExplosionType):Boolean {
+        return (explType == ExplosionType.ATOM)
     }
 
     public function get hiddenObject():IMapObject {
         return NullMapObject.getInstance();
     }
 
-     public function get canShowObjects():Boolean {
-        return false;
-    }
-
-    public function set hiddenObject(value:IMapObject):void  {
+    public function set hiddenObject(value:IMapObject):void {
     }
 }
 }

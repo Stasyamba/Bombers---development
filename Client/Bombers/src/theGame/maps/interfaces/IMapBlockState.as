@@ -6,6 +6,7 @@
 package theGame.maps.interfaces {
 import theGame.explosionss.interfaces.IExplosion;
 import theGame.maps.mapBlocks.MapBlockType;
+import theGame.model.explosionss.ExplosionType;
 
 public interface IMapBlockState {
 
@@ -17,11 +18,13 @@ public interface IMapBlockState {
 
     function canExplosionGoThrough():Boolean
 
+    function canHaveExplosionPrint(explType:ExplosionType):Boolean;
+
     function explode(expl:IExplosion):void;
 
     function get type():MapBlockType;
 
-    function typeAfterExplosion(expl:IExplosion):MapBlockType;
+    function stateAfterExplosion(expl:IExplosion):MapBlockType;
 
     function get canShowObjects():Boolean;
 
