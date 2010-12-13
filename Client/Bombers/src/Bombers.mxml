@@ -76,19 +76,20 @@
 
     <fx:Script>
 		<![CDATA[
-        import api.vkontakte.VkontakteGlobals;
-        import api.vkontakte.util.json.JSON;
-
-        import appmodel.ApplicationModel;
-
-        import components.ApplicationView;
-        import components.WallView;
-        import components.common.FlashVars;
-        import components.common.UserProfile;
-
-        import mx.core.IVisualElement;
-        import mx.rpc.events.FaultEvent;
-        import mx.rpc.events.ResultEvent;
+			import api.vkontakte.VkontakteGlobals;
+			import api.vkontakte.util.json.JSON;
+			
+			import appmodel.ApplicationModel;
+			
+			import components.ApplicationView;
+			import components.WallView;
+			import components.common.FlashVars;
+			import components.common.UserProfile;
+			
+			import mx.controls.Alert;
+			import mx.core.IVisualElement;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
 
         public static const APP_STARTED_FROM_WALL:int = 0;
         public static const APP_STARTED_COMMON:int = 1;
@@ -124,7 +125,6 @@
                 Context.Model.currentSettings.flashVars.scaleMode = VkontakteGlobals.wrapper.application.scaleMode;
                 Context.Model.currentSettings.flashVars.postId = VkontakteGlobals.wrapper.application.parameters.post_id;
                 Context.Model.currentSettings.flashVars.userId = VkontakteGlobals.wrapper.application.parameters.user_id;
-
 
                 if (Context.Model.currentSettings.flashVars.referrer == FlashVars.WALL_VIEW_INLINE) {
                     //mx.controls.Alert.show("App started from wall!");
