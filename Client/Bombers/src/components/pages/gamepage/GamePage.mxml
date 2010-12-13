@@ -33,7 +33,7 @@
         private var gameResultsView:GameResultsView = new GameResultsView();
         //temporary ui elements
 
-
+		// init function
         private function init():void {
 
             Context.Model.addCustomListener(ContextEvent.MAIN_TAB_CHANGED, function (e:ContextEvent):void {
