@@ -56,7 +56,7 @@
                 }
             });
         }
-
+        //change tab back
         private function changeTabBack():void {
             Context.Model.dispatchCustomEvent(ContextEvent.NEED_TO_CHANGE_MAIN_TAB, ApplicationView.TAB_NAME_WORLD);
             if (hasEventListener(Event.ENTER_FRAME))
