@@ -23,20 +23,16 @@
     <fx:Style>
         @namespace
         vkUI
-        "library://vkontakte.ru/2009/ui"
-        ;
+        "library://vkontakte.ru/2009/ui";
         @namespace
         s
-        "library://ns.adobe.com/flex/spark"
-        ;
+        "library://ns.adobe.com/flex/spark";
         @namespace
         mx
-        "library://ns.adobe.com/flex/mx"
-        ;
+        "library://ns.adobe.com/flex/mx";
         @namespace
         components
-        "componentes.*"
-        ;
+        "componentes.*";
 
         @font-face
         {
@@ -87,7 +83,6 @@
 
         import components.ApplicationView;
         import components.WallView;
-        import components.common.ApiResult;
         import components.common.FlashVars;
         import components.common.UserProfile;
 
@@ -226,8 +221,7 @@
         private function httpServerFault(e:FaultEvent):void {
             // do somethings
         }
-
-		]]>
+        ]]>
 	</fx:Script>
 
     <s:BorderContainer

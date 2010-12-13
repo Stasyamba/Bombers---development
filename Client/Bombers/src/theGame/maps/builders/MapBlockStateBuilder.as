@@ -4,9 +4,12 @@
  */
 
 package theGame.maps.builders {
+import theGame.maps.interfaces.IBigObject;
 import theGame.maps.interfaces.IMapBlockState;
+import theGame.maps.interfaces.IMapObjectType;
 import theGame.maps.mapBlocks.MapBlockType;
 import theGame.maps.mapBlocks.NullMapBlock;
+import theGame.maps.mapBlocks.mapBlockStates.BlockUnderBigObject;
 import theGame.maps.mapBlocks.mapBlockStates.BoxBlock;
 import theGame.maps.mapBlocks.mapBlockStates.FragileWallBlock;
 import theGame.maps.mapBlocks.mapBlockStates.FreeBlock;
@@ -31,6 +34,17 @@ public class MapBlockStateBuilder {
     }
 
     public function MapBlockStateBuilder() {
+    }
+
+    public function makeUnderObject(explodesAndStopsExplosion:Boolean, canGoThrough:Boolean, canExplosionGoThrough:Boolean, canSetBomb:Boolean, stateAfterObjectDestroyed:MapBlockType, objectAfterObjectDestroyed:IMapObjectType, explodes:Boolean, under:IBigObject):IMapBlockState {
+        return new BlockUnderBigObject(explodesAndStopsExplosion,
+                canGoThrough,
+                canSetBomb,
+                canExplosionGoThrough,
+                stateAfterObjectDestroyed,
+                objectAfterObjectDestroyed,
+                explodes,
+                under);
     }
 }
 }

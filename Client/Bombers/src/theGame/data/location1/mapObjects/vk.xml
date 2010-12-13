@@ -4,12 +4,43 @@
   -->
 
 <MapObject>
-    <id>vk</id>
-    <width>2</width>
-    <height>2</height>
-    <defaultLife>2</defaultLife>
-    <states>
-        <State life="2" skin="vk2"/>
-        <State life="1" skin="vk1"/>
-    </states>
+    <id val="vk"/>
+    <width val="2"/>
+    <height val="2"/>
+    <defaultLife val="2"/>
+    <skin val="VK"/>
+    <blocks>
+        <ObjectBlock x="0" y="0"
+                     canGoThrough="true"
+                     canSetBomb="true"
+                     canExplosionGoThrough="true"
+                     explodesAndStopsExplosion="true"
+                     typeAfterObjectDestroyed="FREE"
+                     objectAfterObjectDestroyed="HEAL"
+                     explodes="true"/>
+        <ObjectBlock x="0" y="1"
+                     canGoThrough="false"
+                     canSetBomb="false"
+                     canExplosionGoThrough="false"
+                     explodesAndStopsExplosion="false"
+                     typeAfterObjectDestroyed="BOX"
+                     objectAfterObjectDestroyed="ADD_BOMB"
+                     explodes="true"/>
+        <ObjectBlock x="1" y="0"
+                     canGoThrough="true"
+                     canSetBomb="true"
+                     canExplosionGoThrough="true"
+                     explodesAndStopsExplosion="false"
+                     typeAfterObjectDestroyed="WALL"
+                     objectAfterObjectDestroyed="NULL"
+                     explodes="true"/>
+        <ObjectBlock x="1" y="1"
+                     canGoThrough="true"
+                     canSetBomb="false"
+                     canExplosionGoThrough="true"
+                     explodesAndStopsExplosion="false"
+                     typeAfterObjectDestroyed="FREE"
+                     objectAfterObjectDestroyed="NULL"
+                     explodes="true"/>
+    </blocks>
 </MapObject>

@@ -23,10 +23,10 @@ public class PlayerBomber extends BomberBase implements IPlayerBomber {
 
     private var lastViewDir:Direction = Direction.NONE;
     /*
-   * use BombersBuilder instead
-   * */
-    public function PlayerBomber(game:IGame, playerId:int, userName:String, color:PlayerColor, direction:InputDirection, skills:IGameSkills,weapon:IWeapon, skin:BomberSkin, bombBuilder:BombsBuilder) {
-        super(game,playerId,userName,color,skills,weapon,skin,bombBuilder);
+     * use BombersBuilder instead
+     * */
+    public function PlayerBomber(game:IGame, playerId:int, userName:String, color:PlayerColor, direction:InputDirection, skills:IGameSkills, weapon:IWeapon, skin:BomberSkin, bombBuilder:BombsBuilder) {
+        super(game, playerId, userName, color, skills, weapon, skin, bombBuilder);
 
         _direction = direction;
     }
@@ -139,7 +139,7 @@ public class PlayerBomber extends BomberBase implements IPlayerBomber {
     public function explode(expl:IExplosion = null):void {
 
         _life -= expl.damage;
-        if(life < 0) life = 0;
+        if (life < 0) life = 0;
 
         game.playerDamaged.dispatch(expl.damage, isDead)
         if (isDead) {
@@ -158,17 +158,17 @@ public class PlayerBomber extends BomberBase implements IPlayerBomber {
     public function kill():void {
         game.playerDied.dispatch();
         game.playerDamaged.dispatch(_life, true);
-        _life=0;
+        _life = 0;
     }
 
     public function tryUseWeapon():void {
-        if (!isDead && weapon.canActivateAt(_coords.elemX,_coords.elemY)) {
-            game.triedToUseWeapon.dispatch(playerId,_coords.elemX,_coords.elemY,weapon.type);
+        if (!isDead && weapon.canActivateAt(_coords.elemX, _coords.elemY)) {
+            game.triedToUseWeapon.dispatch(playerId, _coords.elemX, _coords.elemY, weapon.type);
         }
     }
 
     public function useWeapon():void {
-        weapon.activateAt(_coords.elemX,coords.elemY,this);
+        weapon.activateAt(_coords.elemX, coords.elemY, this);
     }
 
 }

@@ -12,7 +12,7 @@ import theGame.model.managers.interfaces.IMapManager;
 public class BombBase {
 
 
-    public function BombBase( mapManager:IMapManager, explosionsBuilder:ExplosionsBuilder,block:IMapBlock, owner:IBomber) {
+    public function BombBase(mapManager:IMapManager, explosionsBuilder:ExplosionsBuilder, block:IMapBlock, owner:IBomber) {
         _block = block;
         _owner = owner;
         _mapManager = mapManager;

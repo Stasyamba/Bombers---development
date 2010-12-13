@@ -10,7 +10,7 @@ import org.osflash.signals.Signal;
 
 public class InGameMessageReceivedSignal extends Signal {
     public function InGameMessageReceivedSignal() {
-        super(User,String);
+        super(User, String);
     }
 }
 }

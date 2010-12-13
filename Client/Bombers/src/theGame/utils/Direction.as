@@ -6,11 +6,11 @@
 package theGame.utils {
 public class Direction {
 
-    public static const NONE:Direction = new Direction(0,"none");
-    public static const LEFT:Direction = new Direction(1,"left");
-    public static const RIGHT:Direction = new Direction(2,"right");
-    public static const UP:Direction = new Direction(3,"up");
-    public static const DOWN:Direction = new Direction(4,"down");
+    public static const NONE:Direction = new Direction(0, "none");
+    public static const LEFT:Direction = new Direction(1, "left");
+    public static const RIGHT:Direction = new Direction(2, "right");
+    public static const UP:Direction = new Direction(3, "up");
+    public static const DOWN:Direction = new Direction(4, "down");
 
     private var _value:int;
     private var _key:String;
@@ -23,7 +23,7 @@ public class Direction {
         return dir == Direction.LEFT || dir == Direction.RIGHT;
     }
 
-    function Direction(value:int,key:String) {
+    function Direction(value:int, key:String) {
         _value = value;
         _key = key;
     }

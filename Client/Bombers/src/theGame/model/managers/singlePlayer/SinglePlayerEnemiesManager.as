@@ -4,9 +4,6 @@
  */
 
 package theGame.model.managers.singlePlayer {
-import flash.utils.Dictionary;
-
-import theGame.bombers.interfaces.IEnemyBomber;
 import theGame.model.managers.EnemiesManagerBase;
 import theGame.model.managers.interfaces.IEnemiesManager;
 

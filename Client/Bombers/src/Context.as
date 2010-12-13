@@ -4,8 +4,8 @@ import api.vkontakte.util.MD5;
 
 import appmodel.ApplicationModel;
 
-import theGame.imagesService.ImageService;
 import theGame.games.IGame;
+import theGame.imagesService.ImageService;
 import theGame.model.GameModel;
 import theGame.model.gameServer.GameServer;
 
@@ -18,7 +18,7 @@ public final class Context extends VyanaContext {
     private var _gameModel:GameModel;
     private var _imageService:ImageService;
     private var _gameServer:GameServer;
-    public var  game:IGame;
+    public var game:IGame;
 
 
     public static function wrongJSONToArray(source:String):Array {
@@ -123,10 +123,9 @@ public final class Context extends VyanaContext {
         return Context.getInstance().game;
     }
 
-    public static function set game(value :IGame):void {
+    public static function set game(value:IGame):void {
         Context.getInstance().game = value;
     }
-
 
 
     public static function addEventListener(type:String, listener:Function, weak:Boolean = true):void {

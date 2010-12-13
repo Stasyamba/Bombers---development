@@ -7,7 +7,6 @@ package theGame.bombers {
 import theGame.bombers.interfaces.IEnemyBomber;
 import theGame.bombers.interfaces.IGameSkills;
 import theGame.bombers.skin.BomberSkin;
-import theGame.bombers.skin.GameSkin;
 import theGame.bombss.BombsBuilder;
 import theGame.data.Consts;
 import theGame.explosionss.interfaces.IExplosion;
@@ -20,8 +19,8 @@ public class EnemyBomber extends BomberBase implements IEnemyBomber {
 
     protected var _direction:Direction = Direction.NONE;
 
-    public function EnemyBomber(game:IGame, playerId:int, userName:String, bombBuilder:BombsBuilder, skills:IGameSkills,weapon:IWeapon, skin:BomberSkin, color:PlayerColor) {
-        super(game,playerId,userName,color,skills,weapon,skin,bombBuilder);
+    public function EnemyBomber(game:IGame, playerId:int, userName:String, bombBuilder:BombsBuilder, skills:IGameSkills, weapon:IWeapon, skin:BomberSkin, color:PlayerColor) {
+        super(game, playerId, userName, color, skills, weapon, skin, bombBuilder);
 
         game.enemyInputDirectionChanged.add(directionChanged);
         game.enemyDamaged.add(onDamaged);
@@ -29,7 +28,7 @@ public class EnemyBomber extends BomberBase implements IEnemyBomber {
     }
 
     private function onDied(id:int):void {
-        if(id == playerId)
+        if (id == playerId)
             kill();
     }
 
@@ -83,7 +82,7 @@ public class EnemyBomber extends BomberBase implements IEnemyBomber {
     }
 
     public function useWeapon():void {
-        weapon.activateAt(_coords.elemX,coords.elemY,this);
+        weapon.activateAt(_coords.elemX, coords.elemY, this);
     }
 
     public function explode(expl:IExplosion = null):void {

@@ -8,7 +8,7 @@ import org.osflash.signals.Signal;
 
 public class EnemyDamagedSignal extends Signal {
     public function EnemyDamagedSignal() {
-        super(int,int)
+        super(int, int)
     }
 }
 }

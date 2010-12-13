@@ -8,7 +8,7 @@ import theGame.maps.*;
 import theGame.maps.builders.MapBlockBuilder;
 import theGame.model.managers.interfaces.IMapManager;
 
-public class SinglePlayerMapManager implements IMapManager{
+public class SinglePlayerMapManager implements IMapManager {
 
     private var current:IMap;
     private var mapBlockBuilder:MapBlockBuilder;

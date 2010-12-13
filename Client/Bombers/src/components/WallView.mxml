@@ -45,8 +45,7 @@
 
             mainWallContainer.addElement(content);
         }
-			
-		]]>
+        ]]>
 	</fx:Script>
 
     <s:BorderContainer

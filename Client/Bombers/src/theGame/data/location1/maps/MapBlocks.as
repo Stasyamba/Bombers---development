@@ -35,13 +35,13 @@ public class MapBlocks {
     }
 
     public static function get BOX():BitmapData {
-        if (boxBitmaps == null){
+        if (boxBitmaps == null) {
             boxBitmaps = new Vector.<Bitmap>();
             boxBitmaps.push(new box1())
             boxBitmaps.push(new box2())
             boxBitmaps.push(new box3())
         }
-        var i:int = int(Math.random()*3)
+        var i:int = int(Math.random() * 3)
         return boxBitmaps[i].bitmapData;
     }
 
@@ -50,8 +50,6 @@ public class MapBlocks {
             wallBitmap = new wall();
         return wallBitmap.bitmapData;
     }
-
-   
 
 
 //    public static function get(value:String):BitmapData {

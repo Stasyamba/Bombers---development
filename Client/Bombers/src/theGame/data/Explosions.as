@@ -17,23 +17,22 @@ public class Explosions {
     private static var up:Bitmap;
     private static var down:Bitmap;
 
-    //todo: after should go to mapBlock
     private static var print:Bitmap;
 
-    [Embed(source="../data/location1/images/explosions/cross.png")]
+    [Embed(source="location1/images/explosions/cross.png")]
     public static const CROSS_CLASS:Class;
 
-    [Embed(source="../data/location1/images/explosions/horizontal.png")]
+    [Embed(source="location1/images/explosions/horizontal.png")]
     public static const HORIZONTAL_CLASS:Class;
-    [Embed(source="../data/location1/images/explosions/vertical.png")]
+    [Embed(source="location1/images/explosions/vertical.png")]
     public static const VERTICAL_CLASS:Class;
-    [Embed(source="../data/location1/images/explosions/left.png")]
+    [Embed(source="location1/images/explosions/left.png")]
     public static const LEFT_CLASS:Class;
-    [Embed(source="../data/location1/images/explosions/right.png")]
+    [Embed(source="location1/images/explosions/right.png")]
     public static const RIGHT_CLASS:Class;
-    [Embed(source="../data/location1/images/explosions/up.png")]
+    [Embed(source="location1/images/explosions/up.png")]
     public static const UP_CLASS:Class;
-    [Embed(source="../data/location1/images/explosions/down.png")]
+    [Embed(source="location1/images/explosions/down.png")]
     public static const DOWN_CLASS:Class;
     [Embed(source="location1/images/explosions/print.png")]
     public static const PRINT_CLASS:Class;

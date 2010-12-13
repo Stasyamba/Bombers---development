@@ -37,7 +37,7 @@ public class EnemiesManagerBase {
         return !(enemies[playerId] == null);
     }
 
-    
+
     public function forEachAliveEnemy(todo:Function):void {
         for (var i:int = 1; i <= _enemiesCount + 1; i++) {
             var enemy:IEnemyBomber = enemies[i];

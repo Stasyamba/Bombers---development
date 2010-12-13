@@ -5,7 +5,6 @@
 
 package theGame.model {
 import com.greensock.TweenMax;
-import com.greensock.plugins.*;
 import com.smartfoxserver.v2.entities.User;
 
 import flash.events.Event;
@@ -22,10 +21,10 @@ import theGame.model.signals.GameEndedSignal;
 import theGame.model.signals.GameReadySignal;
 import theGame.model.signals.MapLoadedSignal;
 import theGame.model.signals.ReadyToPlayAgainSignal;
-import theGame.model.signals.manage.ReadyToCreateGameSignal;
 import theGame.model.signals.manage.GameProfileLoadedSignal;
 import theGame.model.signals.manage.GameStartedSignal;
 import theGame.model.signals.manage.PlayerReadyChangedSignal;
+import theGame.model.signals.manage.ReadyToCreateGameSignal;
 import theGame.model.signals.manage.ThreeSecondsToStartSignal;
 import theGame.profiles.GameProfile;
 
@@ -87,16 +86,16 @@ public class GameModel {
 
 
         gameReady.addOnce(function():void {
-            TweenMax.delayedCall(3,function():void{
+            TweenMax.delayedCall(3, function():void {
                 gameStarted.dispatch();
             })
         })
 
         Context.game = gameBuilder.makeSinglePlayer(GameType.SINGLE, 11);
-        if(Context.game.ready) {
+        if (Context.game.ready) {
             gameReady.dispatch();
-        } else{
-            mapLoaded.addOnce(function(xml:XML):void{
+        } else {
+            mapLoaded.addOnce(function(xml:XML):void {
                 gameReady.dispatch();
             })
         }
@@ -159,8 +158,8 @@ public class GameModel {
 
         connectedToGame.dispatch();
 
-        var tim:Timer = new Timer(5000,1);
-        tim.addEventListener(TimerEvent.TIMER_COMPLETE,function(e:Event){
+        var tim:Timer = new Timer(5000, 1);
+        tim.addEventListener(TimerEvent.TIMER_COMPLETE, function(e:Event) {
             startPing();
         })
 
@@ -181,10 +180,10 @@ public class GameModel {
     private function onThreeSecondsToStart(data:Array, mapId:int):void {
         gameStarted.addOnce(onGameStarted)
         Context.game = gameBuilder.makeFromRoom(Context.gameServer.gameRoom, mapId, data);
-        if(Context.game.ready) {
+        if (Context.game.ready) {
             gameReady.dispatch();
-        } else{
-            mapLoaded.addOnce(function(xml:XML):void{
+        } else {
+            mapLoaded.addOnce(function(xml:XML):void {
                 gameReady.dispatch();
             })
         }

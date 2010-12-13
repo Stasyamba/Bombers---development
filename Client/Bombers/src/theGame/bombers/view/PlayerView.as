@@ -22,7 +22,7 @@ public class PlayerView extends BomberViewBase implements IDestroyable {
     private var playerPointer:Sprite;
     private var pulsesCount:int;
 
-    private var pointerTween : TweenMax;
+    private var pointerTween:TweenMax;
 
     public function PlayerView(bomber:IPlayerBomber) {
         super(bomber);
@@ -37,7 +37,7 @@ public class PlayerView extends BomberViewBase implements IDestroyable {
     }
 
     private function onInputDirectionChanged(x:Number, y:Number, dir:Direction, viewDirChanged:Boolean):void {
-        if(_bomber.isDead)
+        if (_bomber.isDead)
             return;
         draw();
     }
@@ -66,7 +66,7 @@ public class PlayerView extends BomberViewBase implements IDestroyable {
             },
             onReverseComplete:function():void {
                 pulsesCount++;
-                if(pulsesCount > 7)
+                if (pulsesCount > 7)
                     stopPulsingPointer();
                 else
                     pointerTween.restart()

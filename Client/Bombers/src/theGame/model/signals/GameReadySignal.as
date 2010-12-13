@@ -6,7 +6,7 @@
 package theGame.model.signals {
 import org.osflash.signals.Signal;
 
-public class GameReadySignal extends Signal{
+public class GameReadySignal extends Signal {
     public function GameReadySignal() {
         super()
     }

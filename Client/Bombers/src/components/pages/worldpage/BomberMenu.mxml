@@ -6,7 +6,7 @@
          width="100%">
     <fx:Script>
 		<![CDATA[
-		]]>
+        ]]>
     </fx:Script>
 
     <fx:Declarations>
@@ -43,7 +43,7 @@
         private function showCreateGameWindow():void {
             var createGameW:CreateGameW = new CreateGameW();
             PopUpManager.addPopUp(createGameW, this, true);
-            createGameW.addEventListener("createGameClicked",function(e:ContextEvent):void{
+            createGameW.addEventListener("createGameClicked", function(e:ContextEvent):void {
                 Context.gameModel.tryCreateRegularGame(e.data.name, e.data.pass);
 
                 Context.gameModel.connectedToGame.addOnce(function ():void {
@@ -58,8 +58,7 @@
                 Context.Model.dispatchCustomEvent(ContextEvent.NEED_TO_CHANGE_MAIN_TAB, ApplicationView.TAB_NAME_GAME);
             });
         }
-
-                          ]]>
+        ]]>
 	</fx:Script>
 
 

@@ -47,5 +47,7 @@ public interface IMapBlock extends IMapBlockState {
     function setDieWall():void;
 
     function get objectCollected():Signal;
+
+    function setState(state:IMapBlockState):void;
 }
 }

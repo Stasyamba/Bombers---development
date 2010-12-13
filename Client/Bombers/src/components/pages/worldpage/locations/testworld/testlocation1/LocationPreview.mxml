@@ -10,7 +10,6 @@
 
     <fx:Script>
 		<![CDATA[
-
         import mx.controls.Alert;
 
         public function setGlow(visible:Boolean):void {
@@ -22,8 +21,7 @@
             // dispatch NEED_TO_OPEN_LOCATION - enabled or disabled
             Alert.show("building2");
         }
-			
-		]]>
+        ]]>
 	</fx:Script>
 
     <mx:Image id="imageUpGlow" source="@Embed(source='assets/tests/bulding2glow.png')" visible="false"/>

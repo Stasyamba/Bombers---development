@@ -18,6 +18,7 @@ public interface IExplosion {
     function expired():Boolean;
 
     function get type():ExplosionType;
+
     /*
      * do(point:ExplosionPoint):void
      * */

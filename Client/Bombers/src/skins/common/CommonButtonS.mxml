@@ -16,14 +16,13 @@
 
     <!-- host component -->
     <fx:Metadata>
-		<![CDATA[ 
+		<![CDATA[
         [HostComponent("components.common.flexcomponents.CommonButton")]
-		]]>
+        ]]>
 	</fx:Metadata>
 
     <fx:Script>
 		<![CDATA[
-
         protected override function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void {
             super.updateDisplayList(unscaledWidth, unscaledHeight);
         }
@@ -35,7 +34,7 @@
         override public function get colorizeExclusions():Array {
             return exclusions;
         }
-		]]>
+        ]]>
 	</fx:Script>
 
     <s:Rect width="130" height="35" radiusX="20" radiusY="20"

@@ -5,9 +5,6 @@
 
 package theGame.bombers.mapInfo {
 import theGame.bombers.interfaces.IGameSkills;
-import theGame.maps.interfaces.IMapBlock;
-import theGame.weapons.AtomBombWeapon;
-import theGame.weapons.IWeapon;
 
 public class GameSkills implements IGameSkills {
 

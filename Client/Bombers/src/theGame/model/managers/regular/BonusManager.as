@@ -42,13 +42,13 @@ public class BonusManager implements IBonusManager {
 
     public function addBonus(bonus:IBonus):void {
         bonus.block.setObject(bonus);
-        trace("bonus " +(bonus.type as BonusType).key + " added at " + bonus.block.x + "," + bonus.block.y)
+        trace("bonus " + (bonus.type as BonusType).key + " added at " + bonus.block.x + "," + bonus.block.y)
         _bonuses.addItem(bonus);
     }
 
     public function takeBonus(x:int, y:int, player:IBomber):void {
         var bonus:IBonus = getBonusAt(x, y);
-        trace("bonus " +(bonus.type as BonusType).key + " taken at " + x + "," + y);
+        trace("bonus " + (bonus.type as BonusType).key + " taken at " + x + "," + y);
         bonus.activateOn(player)
         bonus.block.collectObject(playerManager.myId == player.playerId);
         _bonuses.removeItem(bonus);

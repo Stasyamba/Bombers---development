@@ -15,7 +15,6 @@
 
     <fx:Script>
 		<![CDATA[
-
         private var quads:Array = new Array();
 
         private function init():void {
@@ -28,9 +27,7 @@
         private function mouseMoveHandler(e:MouseEvent):void {
 
         }
-			
-			
-		]]>
+        ]]>
 	</fx:Script>
 
     <s:VGroup width="100%" horizontalAlign="center" gap="20"

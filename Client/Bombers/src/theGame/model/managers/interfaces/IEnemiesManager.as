@@ -1,5 +1,4 @@
 package theGame.model.managers.interfaces {
-import theGame.bombers.interfaces.IBomber;
 import theGame.bombers.interfaces.IEnemyBomber;
 import theGame.explosionss.interfaces.IExplosion;
 

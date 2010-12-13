@@ -35,7 +35,7 @@ public class BombView extends Sprite implements IDrawable {
         }
         if (!pulsing) startPulsing();
 
-        graphics.beginBitmapFill(Context.imageService.getBomb(block.bomb.type,block.bomb.owner.color),null,false,true);
+        graphics.beginBitmapFill(Context.imageService.getBomb(block.bomb.type, block.bomb.owner.color), null, false, true);
         graphics.drawRect(0, 0, Consts.BLOCK_SIZE, Consts.BLOCK_SIZE);
         graphics.endFill();
     }
@@ -56,7 +56,7 @@ public class BombView extends Sprite implements IDrawable {
         if (block.bomb.timeToExplode < 0.6) {
             offset = Context.game.bombsManager.fastOffset;
             scale = Context.game.bombsManager.fastScale;
-        }else{
+        } else {
             offset = Context.game.bombsManager.pulseOffset;
             scale = Context.game.bombsManager.pulseScale;
         }

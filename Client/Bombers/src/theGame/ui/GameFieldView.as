@@ -37,10 +37,10 @@ public class GameFieldView extends Container implements IDrawable,IDestroyable {
     public var overMapView:OverMapView;
     //bomb explosions (no die explosions here)
     public var explosionsView:ExplosionView;
-    //map blocks : boxes,walls and so on
-    public var mapBlocksView:MapBlocksView;
     //interactive big objects players walk on
     public var lowerBigObjectsView:BigObjectsView;
+    //map blocks : boxes,walls and so on
+    public var mapBlocksView:MapBlocksView;
     //enemies
     public var enemiesViews:ArrayList = new ArrayList();
     //player
@@ -66,11 +66,11 @@ public class GameFieldView extends Container implements IDrawable,IDestroyable {
         explosionsView = new ExplosionView();
         contentUI.addChild(explosionsView);
 
+        lowerBigObjectsView = new BigObjectsView(game.mapManager.map, false)
+        contentUI.addChild(lowerBigObjectsView);
+
         mapBlocksView = new MapBlocksView(game.mapManager.map)
         contentUI.addChild(mapBlocksView);
-
-        lowerBigObjectsView = new BigObjectsView(game.mapManager.map)
-        contentUI.addChild(lowerBigObjectsView);
 
         game.enemiesManager.forEachAliveEnemy(function todo(item:IEnemyBomber, playerId:int):void {
             var enemyView:EnemyView = new EnemyView(item);
@@ -81,7 +81,7 @@ public class GameFieldView extends Container implements IDrawable,IDestroyable {
         playerView = new PlayerView(game.playerManager.me);
         contentUI.addChild(playerView);
 
-        higherBigObjectsView = new BigObjectsView(game.mapManager.map);
+        higherBigObjectsView = new BigObjectsView(game.mapManager.map, true);
         contentUI.addChild(higherBigObjectsView);
 
     }

@@ -30,10 +30,7 @@
             // do once at loading time
             worlds.loadWorld(Context.Model.currentSettings.ownGameProfile.currentWorld, true);
         }
-			
-	
-			
-		]]>
+        ]]>
 	</fx:Script>
 
     <worldspack:WorldsView id="worlds"/>

@@ -13,6 +13,6 @@ public interface IBonusManager {
 
     function checkBonusTaken(elapsedMiliSecs:int):void;
 
-    function takeBonus(x:int, y:int,player:IBomber):void;
+    function takeBonus(x:int, y:int, player:IBomber):void;
 }
 }

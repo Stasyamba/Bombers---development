@@ -10,7 +10,7 @@ import theGame.weapons.WeaponType;
 
 public class WeaponUsedSignal extends Signal {
     public function WeaponUsedSignal() {
-        super(int,int,int,WeaponType)
+        super(int, int, int, WeaponType)
     }
 }
 }

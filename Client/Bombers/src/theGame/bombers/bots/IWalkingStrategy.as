@@ -4,7 +4,6 @@
  */
 
 package theGame.bombers.bots {
-
 import theGame.bombers.interfaces.IMapCoords;
 import theGame.utils.Direction;
 

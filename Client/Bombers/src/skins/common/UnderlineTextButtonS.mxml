@@ -17,14 +17,13 @@
 
     <!-- host component -->
     <fx:Metadata>
-		<![CDATA[ 
+		<![CDATA[
         [HostComponent("components.common.flexcomponents.UnderlinedText")]
-		]]>
+        ]]>
 	</fx:Metadata>
 
     <fx:Script>
 		<![CDATA[
-
         [Bindable]
         private var colorLight:uint = 0x000000;
 
@@ -39,7 +38,7 @@
         override public function get colorizeExclusions():Array {
             return exclusions;
         }
-		]]>
+        ]]>
 	</fx:Script>
 
 

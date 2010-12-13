@@ -33,7 +33,7 @@ public class Bombs {
     private static var redGlow:Class;
 
     public static function get REGULAR():BitmapData {
-        if (regularBombBitmap == null){
+        if (regularBombBitmap == null) {
             regularBombBitmap = new regularBomb();
             regularBombBitmap.smoothing = true;
         }
@@ -41,7 +41,7 @@ public class Bombs {
     }
 
     public static function get ATOM():BitmapData {
-        if (atomBombBitmap == null){
+        if (atomBombBitmap == null) {
             atomBombBitmap = new atomBomb();
             atomBombBitmap.smoothing = true;
         }
@@ -49,12 +49,13 @@ public class Bombs {
     }
 
     public static function get BLUE_GLOW():BitmapData {
-        if (blueGlowBitmap == null){
+        if (blueGlowBitmap == null) {
             blueGlowBitmap = new blueGlow();
             blueGlowBitmap.smoothing = true;
         }
         return blueGlowBitmap.bitmapData;
     }
+
     public static function get ORANGE_GLOW():BitmapData {
         if (orangeGlowBitmap == null) {
             orangeGlowBitmap = new orangeGlow();
@@ -62,6 +63,7 @@ public class Bombs {
         }
         return orangeGlowBitmap.bitmapData;
     }
+
     public static function get PINK_GLOW():BitmapData {
         if (pinkGlowBitmap == null) {
             pinkGlowBitmap = new pinkGlow();
@@ -69,6 +71,7 @@ public class Bombs {
         }
         return pinkGlowBitmap.bitmapData;
     }
+
     public static function get RED_GLOW():BitmapData {
         if (redGlowBitmap == null) {
             redGlowBitmap = new redGlow();

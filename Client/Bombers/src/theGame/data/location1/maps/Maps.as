@@ -34,21 +34,21 @@ public class Maps {
 
     public static function getXmlById(mapId:int):XML {
 
-        if(mapXmls[mapId] != null){
+        if (mapXmls[mapId] != null) {
             return mapXmls[mapId];
         }
         uLoader.load(new URLRequest("http://cs1.vensella.ru:8080/bombers_maps/map" + mapId + ".xml?123"))
-        if(!uLoader.hasEventListener(Event.COMPLETE))
+        if (!uLoader.hasEventListener(Event.COMPLETE))
             uLoader.addEventListener(Event.COMPLETE, u_completeHandler);
         return null;
     }
 
     private static function u_completeHandler(event:Event):void {
         //var file:ByteArray = uLoader.data as ByteArray;
-         //file.readUTFBytes(file.length);
+        //file.readUTFBytes(file.length);
         var str:String = uLoader.data as String;
         var xml:XML = new XML(str);
-        
+
         var id:int = xml.id.@val;
         mapXmls[id] = xml;
         Context.gameModel.mapLoaded.dispatch(xml)

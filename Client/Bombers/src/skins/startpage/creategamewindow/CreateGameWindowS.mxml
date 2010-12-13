@@ -4,10 +4,10 @@
              xmlns:mx="library://ns.adobe.com/flex/mx">
 
     <fx:Metadata>
-		<![CDATA[ 
+		<![CDATA[
         [HostComponent("spark.components.Panel")]
         //[HostComponent("SparkTitleWindow")]
-		]]>
+        ]]>
 	</fx:Metadata>
 
     <fx:Script>

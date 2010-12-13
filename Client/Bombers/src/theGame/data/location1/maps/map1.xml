@@ -7,7 +7,7 @@
     <id val="1"/>
     <name>map1</name>
     <type>REGULAR</type>
-    <size width="17" height="11" />
+    <size width="17" height="11"/>
     <spawns>
         <Spawn x="0" y="0"/>
         <Spawn x="0" y="10"/>
@@ -15,22 +15,22 @@
         <Spawn x="16" y="10"/>
     </spawns>
     <rows>
-        <Row val="ffbfwbbfwfbbwfbff" />
-        <Row val="fbwbfwwbfbwwfbwbf" />
-        <Row val="bwbwbbwfwfwbbwbwb" />
-        <Row val="bwfwwbfbbbfbwwbwb" />
-        <Row val="fwbwwfwwwwwfwwbwf" />
-        <Row val="bffffbfbfbfbffffb" />
-        <Row val="fwbwwfwwwwwfwwbwf" />
-        <Row val="bwfwwbfbbbfbwwbwb" />
-        <Row val="bwbwbbwfwfwbbwbwb" />
-        <Row val="fbwbfwwbfbwwfbwbf" />
-        <Row val="ffbfwbbfwfbbwfbff" />
+        <Row val="ffbfwbbfwfbbwfbff"/>
+        <Row val="fbwbfwwbfbwwfbwbf"/>
+        <Row val="bwbwbbwfwfwbbwbwb"/>
+        <Row val="bwfwwbfbbbfbwwbwb"/>
+        <Row val="fwbwwfwwwwwfwwbwf"/>
+        <Row val="bffffbfbfbfbffffb"/>
+        <Row val="fwbwwfwwwwwfwwbwf"/>
+        <Row val="bwfwwbfbbbfbwwbwb"/>
+        <Row val="bwbwbbwfwfwbbwbwb"/>
+        <Row val="fbwbfwwbfbwwfbwbf"/>
+        <Row val="ffbfwbbfwfbbwfbff"/>
     </rows>
     <objects>
         <!--разные одноклеточные объекты: бонусы,всякие взрывы динамитов и т.д. -->
     </objects>
-   <!-- <bigObjects>
+    <!-- <bigObjects>
         <BigObject id="vk" life="2" x="13" y="1"/>
         &lt;!&ndash;большие объекты на несколько клеток. серверу важны только координаты занимаемых клеток для рассчета повреждений &ndash;&gt;
     </bigObjects>-->

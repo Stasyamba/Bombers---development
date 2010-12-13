@@ -75,6 +75,7 @@ public class BomberSkins {
         }
         return robot_skin;
     }
+
     // ---  utils
     [Embed(source="BomberSkins.xml",mimeType="application/octet-stream")]
     private static const xmlClass:Class;
@@ -103,7 +104,7 @@ public class BomberSkins {
         skinElements.down = new SkinElement(new BomberSkins[name + "_down"]() as Bitmap, new BomberSkins[name + "_down_mask"]() as Bitmap)
         skinElements.none = new SkinElement(new BomberSkins[name + "_none"]() as Bitmap, new BomberSkins[name + "_none_mask"]() as Bitmap)
 
-        return new BomberSkin(name,skinElements,colorsObject);
+        return new BomberSkin(name, skinElements, colorsObject);
     }
 }
 }

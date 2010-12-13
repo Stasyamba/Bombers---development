@@ -8,7 +8,7 @@ import theGame.bombers.interfaces.IBomber;
 
 public interface IWeapon {
 
-    function activateAt(x:uint, y:uint,by:IBomber):void;
+    function activateAt(x:uint, y:uint, by:IBomber):void;
 
     function canActivateAt(x:uint, y:uint):Boolean;
 

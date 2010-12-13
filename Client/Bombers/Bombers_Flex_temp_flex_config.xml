@@ -1,19 +1,18 @@
 <flex-config xmlns="http://www.adobe.com/2006/flex-config">
-  <target-player>10.0.0</target-player>
-  <compiler>
-    <debug>true</debug>
-    <source-path>
-      <path-element>src</path-element>
-    </source-path>
-    <library-path append="true">
-      <path-element>D:/work/Bombers/BombersInterface/trunk/bin/trunk.swc</path-element>
-      <path-element>libs/uivkontakte.swc</path-element>
-      <path-element>libs/SFS2X_API_AS3.swc</path-element>
-      <path-element>libs/as3-signals-v0.7.swc</path-element>
-    </library-path>
-  </compiler>
-  <file-specs>
-    <path-element>src/Bombers.mxml</path-element>
-  </file-specs>
-  <output>D:/work/Bombers/BombersInterface/Bombers/bin-debug/Bombers.swf</output>
+    <target-player>10.0.0</target-player>
+    <compiler>
+        <debug>true</debug>
+        <source-path>
+            <path-element>src</path-element>
+        </source-path>
+        <library-path append="true">
+            <path-element>libs/uivkontakte.swc</path-element>
+            <path-element>libs/SFS2X_API_AS3.swc</path-element>
+            <path-element>libs/as3-signals-v0.7.swc</path-element>
+        </library-path>
+    </compiler>
+    <file-specs>
+        <path-element>src/Bombers.mxml</path-element>
+    </file-specs>
+    <output>D:/work/Bombers/BombersInterface/Bombers/bin-debug/Bombers.swf</output>
 </flex-config>

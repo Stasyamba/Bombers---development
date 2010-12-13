@@ -14,11 +14,8 @@ public interface IBigObjectDescription {
 
     function get defaultLife():int;
 
-    /*
-     * array of file names without extension
-     * */
-    function get states():Array;
+    function get blocks():Array;
 
-    function get defaultState():String;
+    function get skin():String;
 }
 }

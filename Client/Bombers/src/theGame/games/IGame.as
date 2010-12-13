@@ -9,9 +9,7 @@ import theGame.model.managers.interfaces.IEnemiesManager;
 import theGame.model.managers.interfaces.IExplosionsManager;
 import theGame.model.managers.interfaces.IMapManager;
 import theGame.model.managers.interfaces.IPlayerManager;
-import theGame.model.managers.regular.BombsManager;
 import theGame.model.signals.DieWallAppearedSignal;
-import theGame.model.signals.weapons.TriedToUseWeaponSignal;
 import theGame.model.signals.bombs.BombSetSignal;
 import theGame.model.signals.bombs.BombsExplodedSignal;
 import theGame.model.signals.bombs.TriedToSetBombSignal;
@@ -30,6 +28,7 @@ import theGame.model.signals.movement.EnemySmoothMovePerformedSignal;
 import theGame.model.signals.movement.PlayerCoordsChangedSignal;
 import theGame.model.signals.movement.PlayerInputDirectionChangedSignal;
 import theGame.model.signals.movement.PlayerViewDirectionChangedSignal;
+import theGame.model.signals.weapons.TriedToUseWeaponSignal;
 
 public interface IGame {
 

@@ -11,7 +11,6 @@ import theGame.maps.IMap;
 import theGame.model.signals.StateAddedSignal;
 import theGame.model.signals.StateRemovedSignal;
 import theGame.playerColors.PlayerColor;
-import theGame.utils.ViewState;
 import theGame.weapons.IWeapon;
 
 public interface IBomber {
@@ -23,7 +22,7 @@ public interface IBomber {
 
     function get life():int;
 
-    function putOnMap(map:IMap,x:int,y:int):void;
+    function putOnMap(map:IMap, x:int, y:int):void;
 
     function get coords():IMapCoords;
 

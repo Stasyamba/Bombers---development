@@ -5,8 +5,6 @@
 
 package theGame.bombss {
 import theGame.bombers.interfaces.IBomber;
-import theGame.bombss.BombBase;
-import theGame.bombss.BombType;
 import theGame.bombss.interfaces.IBomb;
 import theGame.explosionss.ExplosionsBuilder;
 import theGame.explosionss.interfaces.IExplosion;
@@ -14,12 +12,12 @@ import theGame.maps.interfaces.IMapBlock;
 import theGame.model.explosionss.ExplosionType;
 import theGame.model.managers.interfaces.IMapManager;
 
-public class AtomBomb extends BombBase implements IBomb{
+public class AtomBomb extends BombBase implements IBomb {
 
     private static const EXPLODE_TIME:Number = 3;
 
-    public function AtomBomb(mapManager:IMapManager,explosionsBuilder:ExplosionsBuilder,block:IMapBlock,player:IBomber) {
-        super(mapManager,explosionsBuilder,block,player);
+    public function AtomBomb(mapManager:IMapManager, explosionsBuilder:ExplosionsBuilder, block:IMapBlock, player:IBomber) {
+        super(mapManager, explosionsBuilder, block, player);
         _explodeTime = EXPLODE_TIME;
     }
 
@@ -32,7 +30,7 @@ public class AtomBomb extends BombBase implements IBomb{
     }
 
     public function explode():IExplosion {
-        var expl :IExplosion = _explosionsBuilder.make(ExplosionType.ATOM,block.x,block.y)
+        var expl:IExplosion = _explosionsBuilder.make(ExplosionType.ATOM, block.x, block.y)
         expl.perform();
         return expl;
     }

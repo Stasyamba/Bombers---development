@@ -4,7 +4,6 @@
  */
 
 package theGame.model.managers {
-import theGame.bombers.interfaces.IGameSkin;
 import theGame.bombers.interfaces.IGameSkills;
 import theGame.bombers.skin.BomberSkin;
 import theGame.model.managers.interfaces.IProfileManager;

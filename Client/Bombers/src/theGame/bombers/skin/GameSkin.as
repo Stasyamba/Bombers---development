@@ -67,7 +67,7 @@ public class GameSkin implements IGameSkin {
         var bData:BitmapData = (_skin.skinElements[dir.key] as SkinElement).mask.bitmapData;
         var col:int = _skin.colors[color.key].color;
         var blendMode:String = _skin.colors[color.key].blendMode
-        var opacity : Number = _skin.colors[color.key].opacity;
+        var opacity:Number = _skin.colors[color.key].opacity;
 
         for (var i:int = 0; i <= bData.width - 1; i++) {
             for (var j:int = 0; j <= bData.height - 1; j++) {

@@ -27,16 +27,19 @@ public class Bonuses {
             add_bomb = new ADD_BOMB_CLASS() as Bitmap;
         return add_bomb.bitmapData;
     }
+
     public static function get ADD_BOMB_POWER():BitmapData {
         if (add_bomb_power == null)
             add_bomb_power = new ADD_BOMB_POWER_CLASS() as Bitmap;
         return add_bomb_power.bitmapData;
     }
+
     public static function get ADD_SPEED():BitmapData {
         if (add_speed == null)
             add_speed = new ADD_SPEED_CLASS() as Bitmap;
         return add_speed.bitmapData;
     }
+
     public static function get HEAL():BitmapData {
         if (heal == null)
             heal = new HEAL_CLASS() as Bitmap;

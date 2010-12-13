@@ -6,7 +6,7 @@
     <id val="11"/>
     <name>testSingle</name>
     <type>SINGLE</type>
-    <size width="17" height="11" />
+    <size width="17" height="11"/>
     <spawns>
         <Spawn x="8" y="5"/>
         <Spawn x="0" y="0"/>
@@ -14,23 +14,26 @@
         <Spawn x="16" y="10"/>
     </spawns>
     <rows>
-        <Row val="fbbbbbbbbbbbbbbbf" />
-        <Row val="wwwwwwwwwwwwwwwww" />
-        <Row val="bbbbbbbbbbbbbbbbb" />
-        <Row val="wwwwwwwwwwwwwwwww" />
-        <Row val="bbbbbbbfffbbbbbbb" />
-        <Row val="bbbbbbbfffbbbbbbb" />
-        <Row val="bbbbbbbfffbbbbbbb" />
-        <Row val="wwwwwwwwwwwwwwwww" />
-        <Row val="bbbbbbbbbbbbbbbbb" />
-        <Row val="wwwwwwwwwwwwwwwww" />
-        <Row val="bbbbbbbbbbbbbbbbf" />
+        <Row val="fbbbbbbbbbbbbbbbf"/>
+        <Row val="wwwwwwwwwwwwwwwww"/>
+        <Row val="bbbbbbbbbbbbbbbbb"/>
+        <Row val="wwwwwwwwwwwwwwwww"/>
+        <Row val="bbbbbbbfffbbbbbbb"/>
+        <Row val="bbbbbbbfffbbbbbbb"/>
+        <Row val="bbbbbbbfffbbbbbbb"/>
+        <Row val="wwwwwwwwwwwwwwwww"/>
+        <Row val="bbbbbbbbbbbbbbbbb"/>
+        <Row val="wwwwwwwwwwwwwwwww"/>
+        <Row val="bbbbbbbbbbbbbbbbf"/>
     </rows>
     <objects>
         <!--разные одноклеточные объекты: бонусы,всякие взрывы динамитов и т.д. -->
     </objects>
-   <!-- <bigObjects>
-        <BigObject id="vk" life="2" x="13" y="1"/>
-        &lt;!&ndash;большие объекты на несколько клеток. серверу важны только координаты занимаемых клеток для рассчета повреждений &ndash;&gt;
-    </bigObjects>-->
+    <decorations>
+        <Decoration id="vk" x="7" y="4"/>
+    </decorations>
+    <bigObjects>
+        <BigObject id="vk" life="2" x="10" y="5" layer="lower"/>
+        <BigObject id="vk" life="2" x="5" y="9" layer="higher"/>
+    </bigObjects>
 </Map>

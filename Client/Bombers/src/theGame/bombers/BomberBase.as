@@ -46,7 +46,7 @@ public class BomberBase {
     private var _stateAdded:StateAddedSignal = new StateAddedSignal();
     private var _stateRemoved:StateRemovedSignal = new StateRemovedSignal();
 
-    public function BomberBase(game:IGame, playerId:int, userName:String, color:PlayerColor, skills:IGameSkills,weapon:IWeapon, skin:BomberSkin, bombBuilder:BombsBuilder) {
+    public function BomberBase(game:IGame, playerId:int, userName:String, color:PlayerColor, skills:IGameSkills, weapon:IWeapon, skin:BomberSkin, bombBuilder:BombsBuilder) {
         this.game = game;
         _playerId = playerId;
         _bombBuilder = bombBuilder;
@@ -55,21 +55,22 @@ public class BomberBase {
         _color = color;
         _weapon = weapon;
         _userName = userName;
-        
+
         _life = skills.startLife;
     }
+
     protected var _userName:String;
 
-    public function makeImmortalFor(secs:Number,blink:Boolean = true):void {
-        if(isDead || isImmortal)
+    public function makeImmortalFor(secs:Number, blink:Boolean = true):void {
+        if (isDead || isImmortal)
             return;
         _isImmortal = true;
-        if(blink){
-            stateAdded.dispatch(new ViewState(ViewState.BLINKING,{},TweenMax.fromTo(new Object(),Consts.BLINKING_TIME,{alpha:0},{alpha:ViewState.GET_DEFAULT_VALUE, repeat:-1,yoyo:true,paused:true,data:{alpha:ViewState.GET_DEFAULT_VALUE}})))
+        if (blink) {
+            stateAdded.dispatch(new ViewState(ViewState.BLINKING, {}, TweenMax.fromTo(new Object(), Consts.BLINKING_TIME, {alpha:0}, {alpha:ViewState.GET_DEFAULT_VALUE, repeat:-1,yoyo:true,paused:true,data:{alpha:ViewState.GET_DEFAULT_VALUE}})))
         }
-        TweenMax.delayedCall(secs, function():void{
+        TweenMax.delayedCall(secs, function():void {
             _isImmortal = false;
-            if(blink)
+            if (blink)
                 stateRemoved.dispatch(ViewState.BLINKING);
         })
         becameUntouchable.dispatch();
@@ -77,7 +78,7 @@ public class BomberBase {
 
     public function putOnMap(map:IMap, x:int, y:int):void {
         _map = map;
-        _coords = new MapCoords(map,x,y,0,0);
+        _coords = new MapCoords(map, x, y, 0, 0);
     }
 
     public function get userName():String {

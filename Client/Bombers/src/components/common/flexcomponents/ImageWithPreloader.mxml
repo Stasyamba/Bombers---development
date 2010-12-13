@@ -12,7 +12,6 @@
 
     <fx:Script>
 		<![CDATA[
-
         public static const APPEARING_EFFECT_FADE:int = 0;
 
         [Bindable]
@@ -40,8 +39,7 @@
                     break;
             }
         }
-			
-		]]>
+        ]]>
 	</fx:Script>
 
     <mx:Image id="imageBase"

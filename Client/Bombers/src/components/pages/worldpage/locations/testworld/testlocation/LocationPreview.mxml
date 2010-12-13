@@ -21,8 +21,7 @@
             // dispatch NEED_TO_OPEN_LOCATION - enabled or disabled
             Alert.show("building1");
         }
-			
-		]]>
+        ]]>
 	</fx:Script>
 
     <mx:Image id="imageUpGlow" source="@Embed(source='assets/tests/bulding1glow.png')" visible="false"/>

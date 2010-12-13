@@ -26,33 +26,33 @@ public class ApplicationModel extends VkontakteApplicationModel {
             uids: uidP,
             fields: [UserProfileField.UID, UserProfileField.SEX, UserProfileField.PHOTO_BIG, UserProfileField.PHOTO, UserProfileField.PHOTO_MEDIUM, UserProfileField.FIRST_NAME, UserProfileField.LAST_NAME, UserProfileField.NICKNAME]
         }).dispatch(
-                function (result:*):void {
+                   function (result:*):void {
 
-                    var returningData:Array = new Array();
+                       var returningData:Array = new Array();
 
-                    for each (var o:* in result.response) {
+                       for each (var o:* in result.response) {
 
-                        var up:UserProfile = new UserProfile(o[UserProfileField.UID]);
-                        up.sex = o[UserProfileField.SEX];
-                        up.firstName = o[UserProfileField.FIRST_NAME];
-                        up.lastName = o[UserProfileField.LAST_NAME];
-                        up.photoBigSrc = o[UserProfileField.PHOTO_BIG];
-                        up.photoSrc = o[UserProfileField.PHOTO];
-                        up.photoMediumSrc = o[UserProfileField.PHOTO_MEDIUM];
+                           var up:UserProfile = new UserProfile(o[UserProfileField.UID]);
+                           up.sex = o[UserProfileField.SEX];
+                           up.firstName = o[UserProfileField.FIRST_NAME];
+                           up.lastName = o[UserProfileField.LAST_NAME];
+                           up.photoBigSrc = o[UserProfileField.PHOTO_BIG];
+                           up.photoSrc = o[UserProfileField.PHOTO];
+                           up.photoMediumSrc = o[UserProfileField.PHOTO_MEDIUM];
 
-                        if (addToLoadedUsers) {
-                            Context.Model.currentSettings.apiResult.loadedUsers = pushIntoArray(up, Context.Model.currentSettings.apiResult.loadedUsers, "id");
-                        }
+                           if (addToLoadedUsers) {
+                               Context.Model.currentSettings.apiResult.loadedUsers = pushIntoArray(up, Context.Model.currentSettings.apiResult.loadedUsers, "id");
+                           }
 
-                        returningData.push(up);
-                    }
+                           returningData.push(up);
+                       }
 
-                    if (afterEvent == "") {
-                        dispatchCustomEvent(ContextEvent.USERS_PROFILES_LOADED, returningData);
-                    } else {
-                        dispatchCustomEvent(afterEvent, returningData);
-                    }
-                });
+                       if (afterEvent == "") {
+                           dispatchCustomEvent(ContextEvent.USERS_PROFILES_LOADED, returningData);
+                       } else {
+                           dispatchCustomEvent(afterEvent, returningData);
+                       }
+                   });
     }
 
     public function wallSavePhotoID(wallIdP:String, photoIdP:String, postIdP:String, messageP:String):void {
@@ -64,11 +64,11 @@ public class ApplicationModel extends VkontakteApplicationModel {
             post_id: postIdP,
             message: messageP
         }).dispatch(
-                function (result:*):void {
-                    for each (var o:* in result.response) {
-                        //mx.controls.Alert.show("responce:"+ObjectUtil.toString(result.response));
-                    }
-                });
+                   function (result:*):void {
+                       for each (var o:* in result.response) {
+                           //mx.controls.Alert.show("responce:"+ObjectUtil.toString(result.response));
+                       }
+                   });
     }
 
     public function pushIntoArray(val:*, arr:Array, compareProperty:String = ""):Array {
@@ -112,8 +112,7 @@ public class ApplicationModel extends VkontakteApplicationModel {
         return disp.hasEventListener(event);
     }
 
-    public function addCustomListener(event:String, listener:Function, useCapture:Boolean = false,
-                                      priority:int = 0, useWeakReference:Boolean = false):void {
+    public function addCustomListener(event:String, listener:Function, useCapture:Boolean = false, priority:int = 0, useWeakReference:Boolean = false):void {
         if (disp == null) disp = new EventDispatcher();
         disp.addEventListener(event, listener, useCapture, priority, useWeakReference);
     }

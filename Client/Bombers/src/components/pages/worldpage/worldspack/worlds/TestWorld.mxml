@@ -57,9 +57,7 @@
                 selectedLocation.openLocation();
             }
         }
-			
-			
-		]]>
+        ]]>
 	</fx:Script>
 
     <s:Group id="mainWorldGroup" width="100%" height="100%">

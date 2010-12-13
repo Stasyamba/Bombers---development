@@ -42,28 +42,24 @@ public class MapBlock extends MapBlockBase implements IMapBlock {
 
 
     public function canSetBomb():Boolean {
-        //todo:add check bigObject
         if (bomb.type == BombType.NULL)
             return state.canSetBomb();
         return false;
     }
 
     public function canGoThrough():Boolean {
-        //todo:add check bigObject
         if (_bomb.canGoThrough() && object.canGoThrough())
             return state.canGoThrough();
         return false;
     }
 
     public function canExplosionGoThrough():Boolean {
-        //todo:add check bigObject
         if (!object.canExplosionGoThrough())
             return false;
         return state.canExplosionGoThrough();
     }
 
     public function explodesAndStopsExplosion():Boolean {
-        //todo:add check bigObject
         if (object.explodesAndStopsExplosion())
             return true;
         return state.explodesAndStopsExplosion();
@@ -86,6 +82,7 @@ public class MapBlock extends MapBlockBase implements IMapBlock {
 
         checkExplosionPrint(expl);
 
+        if (isExplodingNow) return;
         if (_state.stateAfterExplosion(expl) != _state.type) {
             explosionStopped.addOnce(function():void {
                 if (_state.stateAfterExplosion(expl) == MapBlockType.FREE)
@@ -106,14 +103,19 @@ public class MapBlock extends MapBlockBase implements IMapBlock {
         viewUpdated.dispatch();
     }
 
+    public function setState(state:IMapBlockState):void {
+        _state = state;
+        viewUpdated.dispatch();
+    }
+
     /*
      * use mapblock builder instead
      * */
-    function MapBlock(x:int, y:int, block:IMapBlockState, mapBlockTypeBuilder:MapBlockStateBuilder, mapObjectBuilder:MapObjectBuilder) {
+    function MapBlock(x:int, y:int, block:IMapBlockState, mapBlockStateBuilder:MapBlockStateBuilder, mapObjectBuilder:MapObjectBuilder) {
         _x = x;
         _y = y;
         _state = block;
-        _mapBlockStateBuilder = mapBlockTypeBuilder;
+        _mapBlockStateBuilder = mapBlockStateBuilder;
         _mapObjectBuilder = mapObjectBuilder;
 
         _object = NullMapObject.getInstance();
@@ -147,7 +149,6 @@ public class MapBlock extends MapBlockBase implements IMapBlock {
     }
 
     public function setDieWall():void {
-        // _object = NullMapObject.getInstance();
         _state = _mapBlockStateBuilder.make(MapBlockType.WALL)
         if (_state.type != MapBlockType.WALL)
             trace("WTF???")

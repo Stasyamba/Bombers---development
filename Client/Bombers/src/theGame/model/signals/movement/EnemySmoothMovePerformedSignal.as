@@ -8,7 +8,7 @@ import org.osflash.signals.Signal;
 
 public class EnemySmoothMovePerformedSignal extends Signal {
     public function EnemySmoothMovePerformedSignal() {
-        super(int,Number, Number);
+        super(int, Number, Number);
     }
 
 }

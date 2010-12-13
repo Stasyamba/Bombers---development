@@ -29,8 +29,7 @@ public class ExplosionsManager implements IExplosionsManager {
         for each (var e:IExplosion in expls.source) {
             e.forEachPoint(function (point:ExplosionPoint):void {
                 var b:IMapBlock = mapManager.map.getBlock(point.x, point.y);
-                if (!b.isExplodingNow)
-                    b.explode(e);
+                b.explode(e);
             })
             playerManager.checkPlayerMetExplosion(e);
         }
@@ -76,28 +75,28 @@ public class ExplosionsManager implements IExplosionsManager {
     private function addTypes(type1:ExplosionPointType, type2:ExplosionPointType):ExplosionPointType {
         if (type1 == type2)
             return type1;
-        if(bothAreOneOf(type1,type2,ExplosionPointType.HORIZONTAL,ExplosionPointType.LEFT,ExplosionPointType.RIGHT))
+        if (bothAreOneOf(type1, type2, ExplosionPointType.HORIZONTAL, ExplosionPointType.LEFT, ExplosionPointType.RIGHT))
             return ExplosionPointType.HORIZONTAL
-        if(bothAreOneOf(type1,type2,ExplosionPointType.VERTICAL,ExplosionPointType.UP,ExplosionPointType.DOWN))
+        if (bothAreOneOf(type1, type2, ExplosionPointType.VERTICAL, ExplosionPointType.UP, ExplosionPointType.DOWN))
             return ExplosionPointType.VERTICAL;
         return ExplosionPointType.CROSS;
     }
 
-    private function bothAreOneOf(type1:ExplosionPointType, type2:ExplosionPointType,...args):Boolean {
+    private function bothAreOneOf(type1:ExplosionPointType, type2:ExplosionPointType, ...args):Boolean {
         var r1:Boolean = false;
         var r2:Boolean = false;
 
         for (var i:int = 0; i < args.length; i++) {
-            if( (!r1) && (type1 == (args[i] as ExplosionPointType))){
+            if ((!r1) && (type1 == (args[i] as ExplosionPointType))) {
                 r1 = true;
             }
-            if((!r2) && (type2 == (args[i] as ExplosionPointType))){
+            if ((!r2) && (type2 == (args[i] as ExplosionPointType))) {
                 r2 = true;
             }
         }
-        return r1&&r2;
+        return r1 && r2;
     }
-    
+
     private function getAllExplosionsType():ExplosionType {
         if (explosions.length == 0)
             return ExplosionType.NULL;

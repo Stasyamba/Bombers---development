@@ -8,7 +8,7 @@ import mx.collections.ArrayList;
 
 import org.osflash.signals.Signal;
 
-public class ExplosionsRemovedSignal extends Signal{
+public class ExplosionsRemovedSignal extends Signal {
     public function ExplosionsRemovedSignal() {
         super(ArrayList)
     }

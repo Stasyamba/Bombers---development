@@ -26,6 +26,9 @@ public class NullMapBlock extends MapBlockBase implements IMapBlock {
     public function stopExplosion():void {
     }
 
+    public function setState(state:IMapBlockState):void {
+    }
+
     public function get objectCollected():Signal {
         return null;
     }

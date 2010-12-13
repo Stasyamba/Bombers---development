@@ -28,9 +28,9 @@ public class HameleonWeapon implements IWeapon {
         if (!canActivateAt(x, y))
             return;
         charges--;
-        by.stateAdded.dispatch(new ViewState(ViewState.HAMELEON,{alpha:0.3,blendMode:BlendMode.MULTIPLY}))
+        by.stateAdded.dispatch(new ViewState(ViewState.HAMELEON, {alpha:0.3,blendMode:BlendMode.MULTIPLY}))
         _isActivated = true;
-        TweenMax.delayedCall(5, deactivate,[by]);
+        TweenMax.delayedCall(5, deactivate, [by]);
     }
 
     public function deactivate(by:IBomber):void {

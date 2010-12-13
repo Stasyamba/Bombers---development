@@ -14,6 +14,7 @@ import theGame.data.Consts;
 import theGame.data.Explosions;
 import theGame.data.location1.bombs.Bombs;
 import theGame.data.location1.health_bar.HealthBar;
+import theGame.data.location1.mapObjects.BigObjectsSkins;
 import theGame.data.location1.mapObjects.bonuses.Bonuses;
 import theGame.data.location1.maps.MapBlocks;
 import theGame.data.location1.skins.BomberSkins;
@@ -57,7 +58,7 @@ public class ImageService {
 
     public function getMapBlock(blockType:MapBlockType, location:String = ""):BitmapData {
 
-        return MapBlocks[blockType.value];
+        return MapBlocks[blockType.key];
     }
 
     public function getBomb(type:BombType, color:PlayerColor):BitmapData {
@@ -95,6 +96,10 @@ public class ImageService {
         if (index < 0 || index > 2)
             throw new ArgumentError("wrong die explosion index");
         return Explosions['DIE' + index]
+    }
+
+    public function getBigObject(skin:String):BitmapData {
+        return BigObjectsSkins[skin];
     }
 }
 }

@@ -4,8 +4,6 @@
  */
 
 package theGame.maps.interfaces {
-import theGame.maps.mapObjects.MapObjectType;
-
 public interface IMapObject {
 
     function canExplosionGoThrough():Boolean;

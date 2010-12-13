@@ -29,5 +29,6 @@
 
         private function hide():void {
             PopUpManager.removePopUp(this)
-        }]]></fx:Script>
+        }
+        ]]></fx:Script>
 </s:BorderContainer>

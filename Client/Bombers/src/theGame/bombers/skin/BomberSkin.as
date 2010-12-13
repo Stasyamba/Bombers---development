@@ -4,8 +4,6 @@
  */
 
 package theGame.bombers.skin {
-import flash.display.Bitmap;
-
 public class BomberSkin {
 
     public var name:String
@@ -19,7 +17,7 @@ public class BomberSkin {
     //    public var none:SkinElement;
     //
     //    private var _color:uint = 0;
-    
+
     public function BomberSkin(name:String, skinElements:Object, colors:Object) {
         this.name = name;
         this.skinElements = skinElements;

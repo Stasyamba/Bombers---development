@@ -13,8 +13,6 @@ import theGame.utils.Direction;
 public interface IMap {
     function get blocks():Vector.<IMapBlock>;
 
-    function get bigObjects():Vector.<IBigObject>;
-
     function getBlock(x:uint, y:uint):IMapBlock;
 
     function get width():uint;
@@ -35,5 +33,11 @@ public interface IMap {
     function validPoint(x:int, y:int):Boolean;
 
     function get explosionPrints():ArrayList;
+
+    function get higherBigObjects():Vector.<IBigObject>;
+
+    function get lowerBigObjects():Vector.<IBigObject>;
+
+    function get decorations():Vector.<IBigObject>;
 }
 }

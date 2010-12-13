@@ -77,7 +77,7 @@ public class GameBase {
     protected var _playerInputDirectionChanged:PlayerInputDirectionChangedSignal = new PlayerInputDirectionChangedSignal();
     protected var _enemyInputDirectionChanged:EnemyInputDirectionChangedSignal = new EnemyInputDirectionChangedSignal();
     protected var _enemySmoothMovePerformed:EnemySmoothMovePerformedSignal = new EnemySmoothMovePerformedSignal();
-     //---bombs
+    //---bombs
     protected var _bombSet:BombSetSignal = new BombSetSignal();
     protected var _bombExploded:BombsExplodedSignal = new BombsExplodedSignal();
     protected var _triedToSetBomb:TriedToSetBombSignal = new TriedToSetBombSignal();
@@ -89,11 +89,11 @@ public class GameBase {
     protected var _explosionsAdded:ExplosionsAddedSignal = new ExplosionsAddedSignal();
     protected var _explosionsUpdated:ExplosionsUpdatedSignal = new ExplosionsUpdatedSignal();
     protected var _explosionsRemoved:ExplosionsRemovedSignal = new ExplosionsRemovedSignal();
-     //---bonuses
+    //---bonuses
     protected var _bonusAppeared:BonusAppearedSignal = new BonusAppearedSignal();
     protected var _triedToTakeBonus:TriedToTakeBonusSignal = new TriedToTakeBonusSignal();
     protected var _bonusTaken:BonusTakenSignal = new BonusTakenSignal();
-     //---damage
+    //---damage
     protected var _playerDamaged:PlayerDamagedSignal = new PlayerDamagedSignal();
     protected var _enemyDamaged:EnemyDamagedSignal = new EnemyDamagedSignal();
     protected var _playerDied:PlayerDiedSignal = new PlayerDiedSignal();
@@ -124,15 +124,19 @@ public class GameBase {
     public function get bombExploded():BombsExplodedSignal {
         return _bombExploded;
     }
+
     protected function get weaponUsed():WeaponUsedSignal {
         return _weaponUsed;
     }
+
     public function get triedToSetBomb():TriedToSetBombSignal {
         return _triedToSetBomb;
     }
+
     public function get triedToUseWeapon():TriedToUseWeaponSignal {
         return _triedToUseWeapon;
     }
+
     public function get explosionsChanged():ExplosionsChangedSignal {
         return _explosionsChanged;
     }
@@ -269,7 +273,6 @@ public class GameBase {
     public function get ready():Boolean {
         return _ready;
     }
-
 
 
 }

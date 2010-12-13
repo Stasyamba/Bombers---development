@@ -13,11 +13,14 @@ import theGame.maps.interfaces.IBigObject;
 public class BigObjectsView extends Sprite implements IDrawable {
 
     private var map:IMap;
+    private var isHigher:Boolean;
 
-    public function BigObjectsView(map:IMap) {
+
+    public function BigObjectsView(map:IMap, isHigher:Boolean) {
         this.map = map;
+        this.isHigher = isHigher;
 
-        for each (var obj:IBigObject in map.bigObjects) {
+        for each (var obj:IBigObject in getObjects()) {
             addChild(new BigObjectView(obj));
         }
     }
@@ -27,6 +30,10 @@ public class BigObjectsView extends Sprite implements IDrawable {
             var child:IDrawable = getChildAt(i) as IDrawable;
             child.draw();
         }
+    }
+
+    public function getObjects():Vector.<IBigObject> {
+        return isHigher ? map.higherBigObjects : map.lowerBigObjects
     }
 }
 }

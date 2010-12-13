@@ -8,7 +8,7 @@ import org.osflash.signals.Signal;
 
 public class ThreeSecondsToStartSignal extends Signal {
     public function ThreeSecondsToStartSignal() {
-        super(Array,int)
+        super(Array, int)
     }
 }
 }

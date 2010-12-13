@@ -99,11 +99,11 @@ public class RegularGame extends GameBase implements IGame {
         if (user.isItMe) {
 
             //todo:make a weaponBuilder
-            var player:IPlayerBomber = playersBuilder.makePlayer(this, user.playerId, user.name, color, gameSkills,new AtomBombWeapon(mapManager,bombsBuilder), gameSkin);
+            var player:IPlayerBomber = playersBuilder.makePlayer(this, user.playerId, user.name, color, gameSkills, new AtomBombWeapon(mapManager, bombsBuilder), gameSkin);
             playerManager.setPlayer(player);
         } else {
             //todo: here get profile from user variables and use it to make enemy
-            var enemy:IEnemyBomber = playersBuilder.makeEnemy(this, user.playerId, user.name, color, gameSkills,new AtomBombWeapon(mapManager,bombsBuilder),gameSkin);
+            var enemy:IEnemyBomber = playersBuilder.makeEnemy(this, user.playerId, user.name, color, gameSkills, new AtomBombWeapon(mapManager, bombsBuilder), gameSkin);
             enemiesManager.addEnemy(enemy);
         }
     }
@@ -127,12 +127,12 @@ public class RegularGame extends GameBase implements IGame {
     private function onMapLoaded(xml:XML, spawnData:Array):void {
         mapManager.make(xml);
         spawnData.forEach(
-                function setCoords(item:*, index:int, array:Array):void {
+                         function setCoords(item:*, index:int, array:Array):void {
 
-                    var bomber:IBomber = getPlayer(item.id);
-                    if(bomber != null)
-                        bomber.putOnMap(mapManager.map, item.x, item.y);
-                })
+                             var bomber:IBomber = getPlayer(item.id);
+                             if (bomber != null)
+                                 bomber.putOnMap(mapManager.map, item.x, item.y);
+                         })
         _ready = true;
     }
 

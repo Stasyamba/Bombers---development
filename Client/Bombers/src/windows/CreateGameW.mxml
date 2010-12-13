@@ -51,12 +51,9 @@
 
     <fx:Script>
 		<![CDATA[
-        import components.ApplicationView;
-
         import mx.controls.Alert;
         import mx.managers.PopUpManager;
 
-        import theGame.games.GameType;
         import theGame.utils.Utils;
 
         private var centeredCoords:Point;
@@ -88,16 +85,14 @@
 
         private function createGame_clickHandler(event:MouseEvent):void {
             if (Utils.isCorrectGameName(gameName.text)) {
-                dispatchEvent(new ContextEvent("createGameClicked",false,false,{name:gameName.text,pass:pass.text}))
+                dispatchEvent(new ContextEvent("createGameClicked", false, false, {name:gameName.text,pass:pass.text}))
                 disApearingAnimation.play();
 
             }
             else
                 Alert.show("Неправильное название игры");
         }
-			
-			
-		]]>
+        ]]>
 	</fx:Script>
     <s:layout>
         <s:BasicLayout/>

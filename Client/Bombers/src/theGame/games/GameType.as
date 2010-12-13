@@ -7,8 +7,8 @@ package theGame.games {
 public class GameType {
 
 
-    public static const REGULAR:GameType = new GameType("REGULAR",4,2,'bombers','com.vensella.bombers.BombersGameProcess',true)
-    public static const SINGLE:GameType = new GameType("SINGLE",1,1,'','',false)
+    public static const REGULAR:GameType = new GameType("REGULAR", 4, 2, 'bombers', 'com.vensella.bombers.BombersGameProcess', true)
+    public static const SINGLE:GameType = new GameType("SINGLE", 1, 1, '', '', false)
 
     private var _value:String;
     private var _maxPlayers:int;
@@ -52,7 +52,7 @@ public class GameType {
     }
 
     public static function fromValue(value:String):GameType {
-        switch(value){
+        switch (value) {
             case "REGULAR": return REGULAR;
             case "SINGLE": return SINGLE;
         }

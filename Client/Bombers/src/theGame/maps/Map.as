@@ -4,6 +4,8 @@
  */
 
 package theGame.maps {
+import flash.geom.Point;
+
 import mx.collections.ArrayList;
 import mx.controls.Alert;
 
@@ -11,6 +13,7 @@ import theGame.data.location1.mapObjects.BigObjects;
 import theGame.maps.bigObjects.BigObject;
 import theGame.maps.builders.MapBlockBuilder;
 import theGame.maps.interfaces.IBigObject;
+import theGame.maps.interfaces.IBigObjectDescription;
 import theGame.maps.interfaces.IMapBlock;
 import theGame.maps.mapBlocks.MapBlockType;
 import theGame.utils.Direction;
@@ -21,7 +24,10 @@ public class Map implements IMap {
 
     private var _blocks:Vector.<IMapBlock>;
 
-    private var _bigObjects:Vector.<IBigObject> = new Vector.<IBigObject>;
+    private var _lowerBigObjects:Vector.<IBigObject> = new Vector.<IBigObject>;
+    private var _higherBigObjects:Vector.<IBigObject> = new Vector.<IBigObject>;
+    private var _decorations:Vector.<IBigObject> = new Vector.<IBigObject>;
+
 
     private var _width:uint;
     private var _height:uint;
@@ -64,8 +70,30 @@ public class Map implements IMap {
             }
             y++;
         }
+
+        //decorations
+        for each (var bObj:XML in xml.decorations.Decoration) {
+            var descr:IBigObjectDescription = BigObjects.objects[String(bObj.@id)] as IBigObjectDescription;
+            var origin:Point = new Point(bObj.@x, bObj.@y);
+            var blocksArr:Vector.<IMapBlock> = new Vector.<IMapBlock>();
+            var bo:IBigObject = new BigObject(origin.x, origin.y, descr, blocksArr, blockBuilder.mapBlockStateBuilder, blockBuilder.mapObjectBuilder, true)
+            decorations.push(bo);
+        }
+        //bigObjects
         for each (var bObj:XML in xml.bigObjects.BigObject) {
-            bigObjects.push(new BigObject(bObj.@x, bObj.@y, BigObjects.objects[String(bObj.@id)]));
+            var descr:IBigObjectDescription = BigObjects.objects[String(bObj.@id)] as IBigObjectDescription;
+            var origin:Point = new Point(bObj.@x, bObj.@y);
+            var blocksArr:Vector.<IMapBlock> = new Vector.<IMapBlock>();
+            for (var i:int = 0; i < descr.blocks.length; i++) {
+                var obj:Object = descr.blocks[i]
+                blocksArr.push(getBlock(origin.x + int(obj.x), origin.y + int(obj.y)));
+            }
+            //todo: BO builder
+            var bo:IBigObject = new BigObject(origin.x, origin.y, descr, blocksArr, blockBuilder.mapBlockStateBuilder, blockBuilder.mapObjectBuilder)
+            if (bObj.@layer == "higher")
+                higherBigObjects.push(bo);
+            else
+                lowerBigObjects.push(bo);
         }
         for each (var spawn:XML in xml.spawns.Spawn) {
             _spawns.push({x:spawn.@x,y:spawn.@y})
@@ -133,10 +161,6 @@ public class Map implements IMap {
         return _blocks;
     }
 
-    public function get bigObjects():Vector.<IBigObject> {
-        return _bigObjects;
-    }
-
     public function get spawns():Array {
         return _spawns;
     }
@@ -147,6 +171,18 @@ public class Map implements IMap {
 
     public function get explosionPrints():ArrayList {
         return _explosionPrints;
+    }
+
+    public function get lowerBigObjects():Vector.<IBigObject> {
+        return _lowerBigObjects;
+    }
+
+    public function get higherBigObjects():Vector.<IBigObject> {
+        return _higherBigObjects;
+    }
+
+    public function get decorations():Vector.<IBigObject> {
+        return _decorations;
     }
 }
 }

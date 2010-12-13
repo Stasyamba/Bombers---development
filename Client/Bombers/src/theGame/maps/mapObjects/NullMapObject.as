@@ -9,7 +9,7 @@ import theGame.maps.interfaces.IMapObject;
 import theGame.maps.interfaces.IMapObjectType;
 import theGame.maps.mapBlocks.NullMapBlock;
 
-public class NullMapObject  implements IMapObject {
+public class NullMapObject implements IMapObject {
 
     private static var instance:NullMapObject;
 

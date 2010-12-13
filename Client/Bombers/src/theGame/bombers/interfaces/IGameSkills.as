@@ -4,10 +4,6 @@
  */
 
 package theGame.bombers.interfaces {
-import theGame.maps.IMap;
-import theGame.maps.interfaces.IMapBlock;
-import theGame.weapons.IWeapon;
-
 public interface IGameSkills {
     function get bombCount():int;
 

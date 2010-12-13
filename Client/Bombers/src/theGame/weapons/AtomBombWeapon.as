@@ -7,7 +7,6 @@ package theGame.weapons {
 import theGame.bombers.interfaces.IBomber;
 import theGame.bombss.BombType;
 import theGame.bombss.BombsBuilder;
-import theGame.maps.interfaces.IMapBlock;
 import theGame.model.managers.interfaces.IMapManager;
 
 public class AtomBombWeapon implements IWeapon {
@@ -25,7 +24,7 @@ public class AtomBombWeapon implements IWeapon {
     public function activateAt(x:uint, y:uint, by:IBomber):void {
         if (!canActivateAt(x, y)) return;
         charges--;
-        Context.game.bombSet.dispatch(by.playerId,x,y,BombType.ATOM)
+        Context.game.bombSet.dispatch(by.playerId, x, y, BombType.ATOM)
     }
 
     public function canActivateAt(x:uint, y:uint):Boolean {

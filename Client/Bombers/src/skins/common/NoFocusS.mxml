@@ -30,8 +30,7 @@
         private function skin_updateCompleteHandler(event:Event):void {
             invalidateDisplayList();
         }
-			
-		]]>
+        ]]>
 	</fx:Script>
 
     <!-- <s:Rect id="focusGroup" top="-10" left="-18" right="-18" bottom="-10">
