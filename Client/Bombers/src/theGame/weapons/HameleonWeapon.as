@@ -4,7 +4,7 @@
  */
 
 package theGame.weapons {
-import com.greensock.TweenMax;
+import theGame.utils.greensock.TweenMax;
 
 import flash.display.BlendMode;
 

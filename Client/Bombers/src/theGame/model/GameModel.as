@@ -4,7 +4,7 @@
  */
 
 package theGame.model {
-import com.greensock.TweenMax;
+import theGame.utils.greensock.TweenMax;
 import com.smartfoxserver.v2.entities.User;
 
 import flash.events.Event;

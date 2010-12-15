@@ -4,7 +4,7 @@
  */
 
 package theGame.maps.bigObjects {
-import com.greensock.TweenMax;
+import theGame.utils.greensock.TweenMax;
 
 import org.osflash.signals.Signal;
 

@@ -4,7 +4,7 @@
  */
 
 package theGame.maps.bigObjects.view {
-import com.greensock.TweenMax;
+import theGame.utils.greensock.TweenMax;
 
 import flash.display.BlendMode;
 import flash.display.Sprite;

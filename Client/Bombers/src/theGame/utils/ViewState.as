@@ -4,7 +4,7 @@
  */
 
 package theGame.utils {
-import com.greensock.TweenMax;
+import theGame.utils.greensock.TweenMax;
 
 import flash.display.Sprite;
 

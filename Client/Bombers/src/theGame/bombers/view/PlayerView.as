@@ -4,7 +4,7 @@
  */
 
 package theGame.bombers.view {
-import com.greensock.TweenMax;
+import theGame.utils.greensock.TweenMax;
 
 import flash.display.Bitmap;
 import flash.display.Sprite;
